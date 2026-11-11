@@ -465,6 +465,9 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .gal figure:hover img { scale: 1.05; }
 @media (max-width: 860px) { .creds { padding-bottom: 80px; } .creds-in { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 40px; } .cred-list li { font-size: 18px; } .gal { padding-bottom: 80px; } .gal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .gal figure, .gal figure:nth-child(n) { grid-column: auto; height: 200px; border-radius: 16px; } }
 
+/* Footer: brand + three link columns */
+@media (min-width: 901px) { .foot-grid { grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); } }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -473,10 +476,10 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   <nav class="nav-in" aria-label="Principal">
     <a class="mark" href="index.html" aria-label="s0ygustavo, inicio">s<span>0</span>ygustavo</a>
     <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="como-te-ayudo.html">Cómo te ayudo</a><a href="contenido.html">Contenido</a><a href="quien-soy.html">Quién soy</a></div>
-    <div class="nav-acts"><a class="txt" href="#carta">Carta semanal</a><a class="btn sm" href="contacto.html">Escríbeme</a><button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button></div>
+    <div class="nav-acts"><a class="txt" href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener">Instagram</a><a class="btn sm" href="contacto.html">Escríbeme</a><button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button></div>
   </nav>
 </div>
-<div class="menu" id="menu"><a href="index.html" style="--i:0">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="como-te-ayudo.html" style="--i:2">Cómo te ayudo</a><a href="contenido.html" style="--i:3">Contenido</a><a href="quien-soy.html" style="--i:4">Quién soy</a><a href="contacto.html" style="--i:5" aria-current="page">Contacto</a></div>
+<div class="menu" id="menu"><a href="index.html" style="--i:0">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="como-te-ayudo.html" style="--i:2">Cómo te ayudo</a><a href="contenido.html" style="--i:3">Contenido</a><a href="quien-soy.html" style="--i:4">Quién soy</a><a href="contacto.html" style="--i:5" aria-current="page">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
 
 <header class="phero">
   <div class="wrap">
@@ -503,20 +506,14 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 <footer class="foot on-dark">
   <div class="wrap">
     <div class="foot-grid">
-      <div class="foot-brand" id="carta">
+      <div class="foot-brand">
         <span class="mark">s<span>0</span>ygustavo</span>
-        <p>Carta semanal. Una idea clara sobre dinero, cada semana.</p>
-        <form class="capsule" id="nl" novalidate>
-          <label for="nl-email" class="sr">Tu correo</label>
-          <input id="nl-email" type="email" placeholder="tu@correo.com" autocomplete="email">
-          <button type="submit">Suscribirme</button>
-        </form>
-        <p class="form-note" id="nl-note" aria-live="polite"></p>
+        <p>Ideas claras sobre dinero, todos los días en Instagram.</p>
+        <a class="btn light sm" href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="justify-self:start">Sígueme en Instagram</a>
       </div>
       <div class="fcol"><h4>Sitio</h4><a href="index.html">Inicio</a><a href="filosofia.html">Mi filosofía</a><a href="como-te-ayudo.html">Cómo te ayudo</a><a href="contenido.html">Contenido</a><a href="quien-soy.html">Quién soy</a></div>
       <div class="fcol"><h4>Escríbeme</h4><a href="contacto.html#asesoria">Asesoría</a><a href="contacto.html#conferencias">Conferencias</a><a href="contacto.html#colaboraciones">Colaboraciones</a><a href="contacto.html#otro">Otro tema</a></div>
       <div class="fcol"><h4>Be Block</h4><a href="https://bebl0ck.mx" target="_blank" rel="noopener">bebl0ck.mx</a><span>La firma que dirijo</span></div>
-      <div class="fcol"><h4>Redes</h4><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener">Instagram</a><span>@s0ygustavo</span></div>
     </div>
     <div class="legal">
       <p>El contenido de este sitio es informativo y no constituye una recomendación de inversión personalizada. Cada decisión financiera depende de tu situación particular. Rendimientos pasados no garantizan rendimientos futuros.</p>
@@ -709,18 +706,6 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
   if (!document.documentElement.classList.contains("js")) return;
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .16, rootMargin: "0px 0px -6% 0px" });
   $$("[data-rv], .ph").forEach(el => io.observe(el));
-})();
-
-/* ---------- Newsletter ---------- */
-(function newsletter() {
-  const f = $1("#nl"); if (!f) return;
-  f.addEventListener("submit", e => {
-    e.preventDefault();
-    const v = $1("#nl-email").value.trim(), note = $1("#nl-note");
-    if (!/.+@.+\..+/.test(v)) { note.textContent = "Escribe un correo válido, por ejemplo nombre@correo.com."; return; }
-    note.textContent = "Se abrió tu correo con el mensaje listo. Envíalo para suscribirte.";
-    location.href = "mailto:hola@bebl0ck.mx?subject=" + encodeURIComponent("Quiero recibir la carta semanal") + "&body=" + encodeURIComponent("Hola, quiero recibir la carta semanal de Gustavo Pérez en este correo: " + v);
-  });
 })();
 
 /* ---------- Mobile menu ---------- */
