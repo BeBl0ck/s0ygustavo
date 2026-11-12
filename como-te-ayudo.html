@@ -495,6 +495,10 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 
 .cred-list small { display: block; margin-top: 3px; font-size: 15px; font-weight: 400; letter-spacing: 0; color: var(--t2); }
 
+.proc-head .lead { font-size: 19px; max-width: 54ch; }
+.proc-acts { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 28px; margin-top: 44px; }
+.proc .proc-acts .btn { margin-top: 0; }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -546,19 +550,10 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 
   <section class="proc" aria-labelledby="h-proc">
     <div class="wrap">
-      <div class="proc-top">
-        <div class="proc-head" data-rv>
-          <span class="eyebrow">Asesoría 1 a 1</span>
-          <h2 class="h" id="h-proc">Una sesión personal, sobre el tema que necesites.</h2>
-          <p class="lead">Hablas con mi equipo en Be Block sobre tu caso, no sobre un caso genérico. Puede ser un tema o varios a la vez.</p>
-        </div>
-        <ul class="cred-list" data-rv style="--d:1">
-          <li><span>Finanzas personales<small>Orden, ahorro y metas claras</small></span></li>
-          <li><span>Inversión<small>Estrategias para hacer crecer tu dinero</small></span></li>
-          <li><span>Seguros<small>Protección para ti, los tuyos y tu patrimonio</small></span></li>
-          <li><span>Contabilidad y fiscal<small>Impuestos y obligaciones en orden</small></span></li>
-          <li><span>Arrendamiento<small>Uso de activos sin descapitalizarte</small></span></li>
-        </ul>
+      <div class="proc-head" data-rv>
+        <span class="eyebrow">Asesoría 1 a 1</span>
+        <h2 class="h" id="h-proc">Una sesión personal, sobre el tema que necesites.</h2>
+        <p class="lead">Hablas con mi equipo en Be Block sobre tu caso, no sobre un caso genérico. Puede ser un tema o varios a la vez.</p>
       </div>
       <div class="proc-grid">
         <div class="pstep" data-rv style="--d:0"><h3>Escribes</h3><p>Cuentas en pocas líneas qué quieres resolver.</p></div>
@@ -566,7 +561,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
         <div class="pstep" data-rv style="--d:2"><h3>Sesión 1 a 1</h3><p>Un asesor del área revisa tu caso contigo, con tus números.</p></div>
         <div class="pstep" data-rv style="--d:3"><h3>Propuesta</h3><p>Recibes un plan a tu medida para decidir con calma.</p></div>
       </div>
-      <a class="btn" href="contacto.html#asesoria">Pedir mi asesoría</a>
+      <div class="proc-acts"><a class="btn" href="contacto.html#asesoria">Pedir mi asesoría</a><a class="link" href="https://bebl0ck.mx" target="_blank" rel="noopener">Ver el detalle en Be Block</a></div>
     </div>
   </section>
 
