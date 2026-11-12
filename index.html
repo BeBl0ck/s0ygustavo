@@ -468,6 +468,25 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 /* Footer: brand + three link columns */
 @media (min-width: 901px) { .foot-grid { grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); } }
 
+/* Four blocks on phones and tablets: the stage pins and the blocks change in place */
+.m-stage { display: contents; }
+@media (max-width: 900px) and (min-height: 620px) {
+  .method.pinm { padding-top: 0; }
+  .method.pinm .m-grid { display: block; height: 348vh; height: 348svh; }
+  .method.pinm .m-stage { position: sticky; top: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 22px; height: 100vh; height: 100svh; padding: 78px 0 16px; box-sizing: border-box; }
+  .method.pinm .m-media { display: block; position: relative; top: auto; height: clamp(200px, 36vh, 330px); border-radius: 20px; }
+  .method.pinm .stack { left: 10px; right: 10px; bottom: 10px; display: flex; flex-direction: row-reverse; gap: 6px; }
+  .method.pinm .stack span { flex: 1; min-width: 0; height: 30px; padding-inline: 6px; justify-content: center; border-radius: 10px; font-size: 12px; }
+  .method.pinm .stack span i { display: none; }
+  .method.pinm .steps { position: relative; min-height: 0; }
+  .method.pinm .step { position: absolute; inset: 0; min-height: 0; padding: 0; align-content: start; gap: 12px; opacity: 0; visibility: hidden; translate: 0 22px; transition: opacity .45s var(--ease2), translate .6s var(--ease2), visibility 0s .45s; }
+  .method.pinm .step.on { opacity: 1; visibility: visible; translate: 0 0; transition-delay: .1s, .1s, 0s; }
+  .method.pinm .step > img { display: none; }
+  .method.pinm .step h3 { font-size: 34px; }
+  .method.pinm .step p { font-size: 19px; }
+  .method.pinm .step ul { gap: 9px; margin-top: 2px; font-size: 16px; }
+}
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -665,16 +684,30 @@ scrollFns.push(() => nav.classList.toggle("scrolled", scrollY > 48));
 
 /* ---------- Method: pinned four-block sequence ---------- */
 (function method() {
-  if (!$1(".method")) return;
-  const steps = $$(".step"), imgs = $$("#mMedia > img"), bars = $$("#stack span");
+  const sec = $1(".method"); if (!sec) return;
+  const steps = $$(".step", sec), imgs = $$("#mMedia > img"), bars = $$("#stack span"), grid = $1(".m-grid", sec), stage = $1(".m-stage", sec);
+  let cur = -1, pin = false;
   function set(k) {
+    if (k === cur) return; cur = k;
     steps.forEach((s, i) => s.classList.toggle("on", i === k));
     imgs.forEach((im, i) => im.classList.toggle("on", i === k));
     bars.forEach(b => { const n = +b.dataset.k; b.classList.toggle("cur", n === k); b.classList.toggle("done", n < k); });
   }
-  if (!("IntersectionObserver" in window)) return;
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) set(+e.target.dataset.k); }), { rootMargin: "-48% 0px -48% 0px" });
-  steps.forEach(s => io.observe(s));
+  set(0);
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (!pin && e.isIntersecting) set(+e.target.dataset.k); }), { rootMargin: "-48% 0px -48% 0px" });
+    steps.forEach(s => io.observe(s));
+  }
+  if (RM || !stage) return;
+  /* Phones and tablets: the stage pins and the four blocks change in place while you scroll. */
+  const mq = matchMedia("(max-width: 900px) and (min-height: 620px)");
+  scrollFns.push(() => {
+    if (!pin) return;
+    const r = grid.getBoundingClientRect(), total = r.height - stage.offsetHeight; if (total <= 0) return;
+    set(Math.min(steps.length - 1, Math.floor(clamp(-r.top / total) * steps.length)));
+  });
+  const apply = () => { pin = mq.matches; sec.classList.toggle("pinm", pin); reqScroll(); };
+  mq.addEventListener("change", apply); apply();
 })();
 
 /* ---------- Highlights rail: autoplay, dots, pause ---------- */
