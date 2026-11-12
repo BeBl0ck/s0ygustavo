@@ -499,6 +499,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .proc-acts { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 28px; margin-top: 44px; }
 .proc .proc-acts .btn { margin-top: 0; }
 
+/* Contact panel without a suggested message: who answers on the left, channels on the right */
+.p-left .btn { justify-self: start; margin-top: 6px; }
+.p-right .chan { margin-top: 0; }
+.p-note { color: var(--t2); font-size: 14px; }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -516,7 +521,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   <div class="wrap">
     <span class="eyebrow">Contacto</span>
     <h1>¿De qué quieres <em>hablar?</em></h1>
-    <p class="lead">Elige un tema y te digo a quién escribirle, con el mensaje listo.</p>
+    <p class="lead">Elige un tema y te digo a quién escribirle.</p>
   </div>
 </header>
 
@@ -697,13 +702,13 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
 (function router() {
   if (!$1("#panel")) return;
   const R = {
-    asesoria: { subj: "Quiero una asesoría 1 a 1", tag: "Te atiende Be Block", h: "Escribe a Be Block", why: "El equipo de Be Block te agenda una asesoría 1 a 1 en finanzas personales, inversión, seguros, contabilidad y fiscal o arrendamiento.", ch: [["Correo", "hola@bebl0ck.mx"], ["Teléfono", "56 1912 5776"], ["Sitio", "bebl0ck.mx", "https://bebl0ck.mx"]], msg: "Hola, vengo de la página de Gustavo Pérez. Me gustaría agendar una asesoría 1 a 1 sobre: ___.", note: "Te responde el equipo de Be Block." },
-    conferencias: { subj: "Invitación a conferencia", tag: "Te atiende Gustavo", h: "Invita a Gustavo", why: "Para conferencias, talleres y charlas en empresas, foros o eventos. Cuéntale fecha, lugar, público y tema.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Me gustaría invitarte a dar una conferencia. Fecha: ___. Lugar: ___. Público: ___. Tema: ___.", note: "Te responde Gustavo." },
-    colaboraciones: { subj: "Propuesta de colaboración", tag: "Te atiende Gustavo", h: "Propón una colaboración", why: "Para colaboraciones publicitarias con marcas, campañas, podcasts, entrevistas y medios. Cuéntale la idea en pocas líneas.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Te escribo de parte de ___ para proponerte una colaboración: ___.", note: "Te responde Gustavo." },
-    otro: { subj: "Contacto desde s0ygustavo.com", tag: "Te atiende Gustavo", h: "Escribe a Gustavo", why: "Si tu tema no cabe en los anteriores, escríbelo tal cual. Si es sobre tu plan personal, te canaliza con Be Block.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Te escribo por lo siguiente: ___.", note: "Te responde Gustavo." }
+    asesoria: { subj: "Quiero una asesoría 1 a 1", tag: "Te atiende Be Block", h: "Escribe a Be Block", why: "El equipo de Be Block te agenda una asesoría 1 a 1 en finanzas personales, inversión, seguros, contabilidad y fiscal o arrendamiento.", ch: [["Correo", "hola@bebl0ck.mx"], ["Teléfono", "56 1912 5776"], ["Sitio", "bebl0ck.mx", "https://bebl0ck.mx"]], note: "Te responde el equipo de Be Block." },
+    conferencias: { subj: "Invitación a conferencia", tag: "Te atiende Gustavo", h: "Invita a Gustavo", why: "Para conferencias, talleres y charlas en empresas, foros o eventos. Cuéntale fecha, lugar, público y tema.", ch: [["Correo", "gperez@bebl0ck.mx"]], note: "Te responde Gustavo." },
+    colaboraciones: { subj: "Propuesta de colaboración", tag: "Te atiende Gustavo", h: "Propón una colaboración", why: "Para colaboraciones publicitarias con marcas, campañas, podcasts, entrevistas y medios. Cuéntale la idea en pocas líneas.", ch: [["Correo", "gperez@bebl0ck.mx"]], note: "Te responde Gustavo." },
+    otro: { subj: "Contacto desde s0ygustavo.com", tag: "Te atiende Gustavo", h: "Escribe a Gustavo", why: "Si tu tema no cabe en los anteriores, escríbelo tal cual. Si es sobre tu plan personal, te canaliza con Be Block.", ch: [["Correo", "gperez@bebl0ck.mx"]], note: "Te responde Gustavo." }
   };
   const panel = $1("#panel"), tabs = $$(".tab");
-  const mailto = (addr, d) => "mailto:" + addr + "?subject=" + encodeURIComponent(d.subj) + "&body=" + encodeURIComponent(d.msg);
+  const mailto = (addr, d) => "mailto:" + addr + "?subject=" + encodeURIComponent(d.subj);
   const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
   function copyBtn(target, label) {
     const b = el("button", "copy", label); b.type = "button";
@@ -729,13 +734,11 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
       else if (val) row.append(copyBtn(b, "Copiar"));
       chan.append(row);
     });
-    left.append(el("span", "eyebrow", d.tag), el("h3", "", d.h), el("p", "why", d.why), chan);
-    const right = el("div", "p-right"), msg = el("p", "msg", d.msg), foot = el("div", "p-foot");
-    const acts = el("div", "p-acts"); acts.append(copyBtn(msg, "Copiar mensaje"));
     const mail = d.ch.find(c => c[0] === "Correo" && c[1]);
-    if (mail) { const s = el("a", "copy send", "Enviar correo"); s.href = mailto(mail[1], d); acts.append(s); }
-    foot.append(el("small", "", d.note), acts);
-    right.append(el("span", "cap", "Mensaje sugerido"), msg, foot);
+    left.append(el("span", "eyebrow", d.tag), el("h3", "", d.h), el("p", "why", d.why));
+    if (mail) { const go = el("a", "btn", "Escribir correo"); go.href = mailto(mail[1], d); left.append(go); }
+    const right = el("div", "p-right");
+    right.append(chan, el("small", "p-note", d.note));
     panel.append(left, right);
     panel.classList.remove("swap"); void panel.offsetWidth; panel.classList.add("swap");
   }
