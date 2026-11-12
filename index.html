@@ -487,6 +487,12 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   .method.pinm .step ul { gap: 9px; margin-top: 2px; font-size: 16px; }
 }
 
+/* Advisory detail: what the session covers, then how it works */
+.proc-top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 80px; align-items: start; margin-bottom: 64px; }
+.proc-top .proc-head { margin-bottom: 0; }
+.proc-top .lead { font-size: 19px; max-width: 40ch; }
+@media (max-width: 860px) { .proc-top { grid-template-columns: minmax(0, 1fr); gap: 28px; margin-bottom: 40px; } }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -549,7 +555,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
       </div>
       <div class="exp-grid">
         <a class="xcard" href="filosofia.html" data-rv style="--d:0"><img src="img/gustavo-columnas.jpg" alt="" loading="lazy" width="1125" height="780"><div class="xcap"><small>Mi filosofía</small><h3>Cuatro bloques, en orden.</h3><span class="go">Ver cómo pienso el dinero</span></div></a>
-        <a class="xcard" href="como-te-ayudo.html" data-rv style="--d:1"><img src="img/asesoria.jpg" alt="" loading="lazy" width="1280" height="853"><div class="xcap"><small>Cómo te ayudo</small><h3>Tres formas de empezar.</h3><span class="go">Ver opciones</span></div></a>
+        <a class="xcard" href="como-te-ayudo.html" data-rv style="--d:1"><img src="img/asesoria.jpg" alt="" loading="lazy" width="1280" height="853"><div class="xcap"><small>Cómo te ayudo</small><h3>Cuatro formas de trabajar juntos.</h3><span class="go">Ver opciones</span></div></a>
         <a class="xcard" href="contenido.html" data-rv style="--d:0"><img src="img/gustavo-telefono.jpg" alt="" loading="lazy" width="1125" height="1386" style="object-position:50% 24%"><div class="xcap"><small>Contenido</small><h3>Finanzas claras, todos los días.</h3><span class="go">Ver lo que publico</span></div></a>
         <a class="xcard" href="quien-soy.html" data-rv style="--d:1"><img src="img/gustavo-sofa.jpg" alt="" loading="lazy" width="1230" height="853" style="object-position:50% 30%"><div class="xcap"><small>Quién soy</small><h3>Sin promesas mágicas. Con estructura.</h3><span class="go">Conóceme</span></div></a>
       </div>
@@ -743,9 +749,9 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
 (function router() {
   if (!$1("#panel")) return;
   const R = {
-    asesoria: { subj: "Quiero agendar una asesoría", tag: "Te atiende Be Block", h: "Escribe a Be Block", why: "El equipo de Be Block te agenda una asesoría, revisa tus números y arma tu plan a la medida.", ch: [["Correo", "hola@bebl0ck.mx"], ["Teléfono", "55 6136 2524"], ["Sitio", "bebl0ck.mx", "https://bebl0ck.mx"]], msg: "Hola, vengo de la página de Gustavo Pérez. Me gustaría agendar una asesoría para revisar mis finanzas.", note: "Te responde el equipo de Be Block." },
+    asesoria: { subj: "Quiero una asesoría 1 a 1", tag: "Te atiende Be Block", h: "Escribe a Be Block", why: "El equipo de Be Block te agenda una asesoría 1 a 1 para revisar tus números y armar tu plan a la medida.", ch: [["Correo", "hola@bebl0ck.mx"], ["Teléfono", "55 6136 2524"], ["Sitio", "bebl0ck.mx", "https://bebl0ck.mx"]], msg: "Hola, vengo de la página de Gustavo Pérez. Me gustaría agendar una asesoría 1 a 1 para revisar mis finanzas.", note: "Te responde el equipo de Be Block." },
     conferencias: { subj: "Invitación a conferencia", tag: "Te atiende Gustavo", h: "Invita a Gustavo", why: "Para conferencias, talleres y charlas en empresas, foros o eventos. Cuéntale fecha, lugar, público y tema.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Me gustaría invitarte a dar una conferencia. Fecha: ___. Lugar: ___. Público: ___. Tema: ___.", note: "Te responde Gustavo." },
-    colaboraciones: { subj: "Propuesta de colaboración", tag: "Te atiende Gustavo", h: "Propón una colaboración", why: "Para podcasts, entrevistas, medios y alianzas. Cuéntale la idea en pocas líneas.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Te escribo para proponerte una colaboración: ___.", note: "Te responde Gustavo." },
+    colaboraciones: { subj: "Propuesta de colaboración", tag: "Te atiende Gustavo", h: "Propón una colaboración", why: "Para colaboraciones publicitarias con marcas, campañas, podcasts, entrevistas y medios. Cuéntale la idea en pocas líneas.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Te escribo de parte de ___ para proponerte una colaboración: ___.", note: "Te responde Gustavo." },
     otro: { subj: "Contacto desde s0ygustavo.com", tag: "Te atiende Gustavo", h: "Escribe a Gustavo", why: "Si tu tema no cabe en los anteriores, escríbelo tal cual. Si es sobre tu plan personal, te canaliza con Be Block.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Te escribo por lo siguiente: ___.", note: "Te responde Gustavo." }
   };
   const panel = $1("#panel"), tabs = $$(".tab");
