@@ -493,6 +493,8 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .proc-top .lead { font-size: 19px; max-width: 40ch; }
 @media (max-width: 860px) { .proc-top { grid-template-columns: minmax(0, 1fr); gap: 28px; margin-bottom: 40px; } }
 
+.cred-list small { display: block; margin-top: 3px; font-size: 15px; font-weight: 400; letter-spacing: 0; color: var(--t2); }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -745,7 +747,7 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
 (function router() {
   if (!$1("#panel")) return;
   const R = {
-    asesoria: { subj: "Quiero una asesoría 1 a 1", tag: "Te atiende Be Block", h: "Escribe a Be Block", why: "El equipo de Be Block te agenda una asesoría 1 a 1 para revisar tus números y armar tu plan a la medida.", ch: [["Correo", "hola@bebl0ck.mx"], ["Teléfono", "55 6136 2524"], ["Sitio", "bebl0ck.mx", "https://bebl0ck.mx"]], msg: "Hola, vengo de la página de Gustavo Pérez. Me gustaría agendar una asesoría 1 a 1 para revisar mis finanzas.", note: "Te responde el equipo de Be Block." },
+    asesoria: { subj: "Quiero una asesoría 1 a 1", tag: "Te atiende Be Block", h: "Escribe a Be Block", why: "El equipo de Be Block te agenda una asesoría 1 a 1 en finanzas personales, inversión, seguros, contabilidad y fiscal o arrendamiento.", ch: [["Correo", "hola@bebl0ck.mx"], ["Teléfono", "55 6136 2524"], ["Sitio", "bebl0ck.mx", "https://bebl0ck.mx"]], msg: "Hola, vengo de la página de Gustavo Pérez. Me gustaría agendar una asesoría 1 a 1 sobre: ___.", note: "Te responde el equipo de Be Block." },
     conferencias: { subj: "Invitación a conferencia", tag: "Te atiende Gustavo", h: "Invita a Gustavo", why: "Para conferencias, talleres y charlas en empresas, foros o eventos. Cuéntale fecha, lugar, público y tema.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Me gustaría invitarte a dar una conferencia. Fecha: ___. Lugar: ___. Público: ___. Tema: ___.", note: "Te responde Gustavo." },
     colaboraciones: { subj: "Propuesta de colaboración", tag: "Te atiende Gustavo", h: "Propón una colaboración", why: "Para colaboraciones publicitarias con marcas, campañas, podcasts, entrevistas y medios. Cuéntale la idea en pocas líneas.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Te escribo de parte de ___ para proponerte una colaboración: ___.", note: "Te responde Gustavo." },
     otro: { subj: "Contacto desde s0ygustavo.com", tag: "Te atiende Gustavo", h: "Escribe a Gustavo", why: "Si tu tema no cabe en los anteriores, escríbelo tal cual. Si es sobre tu plan personal, te canaliza con Be Block.", ch: [["Correo", "gperez@bebl0ck.mx"]], msg: "Hola, Gustavo. Te escribo por lo siguiente: ___.", note: "Te responde Gustavo." }
