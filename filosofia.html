@@ -946,25 +946,33 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
     if (bad.length) bad[0][0].focus();
     return !bad.length;
   }
+  /* Without a form service connected, the visitor's own mail app sends the request. */
+  function viaMail(data) {
+    const to = forGus() ? GUS : BB;
+    const body = "Nombre: " + data.Nombre + "\nCorreo: " + data.email + "\nTeléfono: " + data["Teléfono"] + "\nMe interesa: " + data["Interés"];
+    f.hidden = true; done.hidden = false; done.focus({ preventScroll: true });
+    $1(".eyebrow", done).textContent = "Un paso más";
+    $1("h2", done).textContent = "Envía el correo que se abrió.";
+    $1("p", done).textContent = "Tus datos ya van escritos; solo confirma el envío. Si no se abrió tu correo, escribe a " + to + ".";
+    location.href = "mailto:" + to + "?subject=" + encodeURIComponent(data._subject) + "&body=" + encodeURIComponent(body);
+  }
   f.addEventListener("submit", async e => {
     e.preventDefault(); if (!check()) return;
     if ($1('[name="_honey"]', f).value) return;
     const label = topic.options[topic.selectedIndex].text;
     const data = { Nombre: name.value.trim(), email: email.value.trim(), "Teléfono": phone.value.trim(), "Interés": label, _replyto: email.value.trim(), _subject: "Nuevo contacto en s0ygustavo.com: " + label, _template: "table", _captcha: "false" };
     if (forGus()) data._cc = GUS;
+    if (!LIVE) { f.hidden = true; done.hidden = false; done.focus({ preventScroll: true }); $1("p", done).textContent = "Vista previa: en el sitio publicado, estos datos se envían por correo."; return; }
+    if (!ENDPOINT) { viaMail(data); return; }
     btn.disabled = true; btn.textContent = "Enviando…";
+    const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 10000);
     try {
-      if (LIVE && ENDPOINT) {
-        const r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
-        const j = await r.json().catch(() => ({}));
-        if (!r.ok || String(j.success) === "false") throw new Error(j.message || "error");
-      } else await new Promise(r => setTimeout(r, 600));
+      const r = await fetch(ENDPOINT, { method: "POST", signal: ctl.signal, headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || String(j.success) === "false") throw new Error(j.message || "error");
       f.hidden = true; done.hidden = false; done.focus({ preventScroll: true });
-      if (!(LIVE && ENDPOINT)) $1("p", done).textContent = "Vista previa: en el sitio publicado, estos datos llegan a tu correo.";
-    } catch (x) {
-      err.textContent = "No se pudo enviar. Intenta de nuevo o usa el contacto directo de esta página.";
-      btn.disabled = false; btn.textContent = "Enviar";
-    }
+    } catch (x) { viaMail(data); }
+    finally { clearTimeout(timer); btn.disabled = false; btn.textContent = "Enviar"; }
   });
 })();
 

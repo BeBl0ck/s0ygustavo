@@ -604,7 +604,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
     <div class="wrap">
       <div class="cf-grid">
         <div>
-          <form class="cf" id="cf" novalidate data-endpoint="https://formsubmit.co/ajax/hola@bebl0ck.mx" data-bb="hola@bebl0ck.mx" data-gus="gperez@bebl0ck.mx">
+          <form class="cf" id="cf" novalidate data-endpoint="" data-bb="hola@bebl0ck.mx" data-gus="gperez@bebl0ck.mx">
             <div class="cf-row"><label for="cf-name">Nombre</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
             <div class="cf-row"><label for="cf-email">Correo</label><input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
             <div class="cf-row"><label for="cf-phone">Teléfono</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
@@ -621,7 +621,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
             <input class="cf-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
             <p class="cf-err" id="cf-err" role="alert"></p>
             <button class="btn" type="submit" id="cf-send">Enviar</button>
-            <p class="cf-legal">Al enviar aceptas que te contactemos para atender tu solicitud.</p>
+            <p class="cf-legal">Al enviar se abre tu correo con estos datos ya escritos; solo confirma el envío. Los usamos para contactarte y atender tu solicitud.</p>
           </form>
           <div class="cf-done" id="cf-done" hidden tabindex="-1">
             <span class="eyebrow">Enviado</span>
@@ -934,25 +934,33 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
     if (bad.length) bad[0][0].focus();
     return !bad.length;
   }
+  /* Without a form service connected, the visitor's own mail app sends the request. */
+  function viaMail(data) {
+    const to = forGus() ? GUS : BB;
+    const body = "Nombre: " + data.Nombre + "\nCorreo: " + data.email + "\nTeléfono: " + data["Teléfono"] + "\nMe interesa: " + data["Interés"];
+    f.hidden = true; done.hidden = false; done.focus({ preventScroll: true });
+    $1(".eyebrow", done).textContent = "Un paso más";
+    $1("h2", done).textContent = "Envía el correo que se abrió.";
+    $1("p", done).textContent = "Tus datos ya van escritos; solo confirma el envío. Si no se abrió tu correo, escribe a " + to + ".";
+    location.href = "mailto:" + to + "?subject=" + encodeURIComponent(data._subject) + "&body=" + encodeURIComponent(body);
+  }
   f.addEventListener("submit", async e => {
     e.preventDefault(); if (!check()) return;
     if ($1('[name="_honey"]', f).value) return;
     const label = topic.options[topic.selectedIndex].text;
     const data = { Nombre: name.value.trim(), email: email.value.trim(), "Teléfono": phone.value.trim(), "Interés": label, _replyto: email.value.trim(), _subject: "Nuevo contacto en s0ygustavo.com: " + label, _template: "table", _captcha: "false" };
     if (forGus()) data._cc = GUS;
+    if (!LIVE) { f.hidden = true; done.hidden = false; done.focus({ preventScroll: true }); $1("p", done).textContent = "Vista previa: en el sitio publicado, estos datos se envían por correo."; return; }
+    if (!ENDPOINT) { viaMail(data); return; }
     btn.disabled = true; btn.textContent = "Enviando…";
+    const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 10000);
     try {
-      if (LIVE && ENDPOINT) {
-        const r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
-        const j = await r.json().catch(() => ({}));
-        if (!r.ok || String(j.success) === "false") throw new Error(j.message || "error");
-      } else await new Promise(r => setTimeout(r, 600));
+      const r = await fetch(ENDPOINT, { method: "POST", signal: ctl.signal, headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || String(j.success) === "false") throw new Error(j.message || "error");
       f.hidden = true; done.hidden = false; done.focus({ preventScroll: true });
-      if (!(LIVE && ENDPOINT)) $1("p", done).textContent = "Vista previa: en el sitio publicado, estos datos llegan a tu correo.";
-    } catch (x) {
-      err.textContent = "No se pudo enviar. Intenta de nuevo o usa el contacto directo de esta página.";
-      btn.disabled = false; btn.textContent = "Enviar";
-    }
+    } catch (x) { viaMail(data); }
+    finally { clearTimeout(timer); btn.disabled = false; btn.textContent = "Enviar"; }
   });
 })();
 
