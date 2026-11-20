@@ -709,6 +709,9 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   .cv { gap: 10px; } .cv-side { gap: 10px; }
 }
 
+/* Service cards: a deeper veil for photographs with a bright background, so the caption stays readable */
+.slide.deep::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, .56) 56%, rgba(0, 0, 0, .86)); }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>

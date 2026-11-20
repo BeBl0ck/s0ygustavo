@@ -709,6 +709,9 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   .cv { gap: 10px; } .cv-side { gap: 10px; }
 }
 
+/* Service cards: a deeper veil for photographs with a bright background, so the caption stays readable */
+.slide.deep::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, .56) 56%, rgba(0, 0, 0, .86)); }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -798,8 +801,8 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
             <span class="xp-go">Ver mi filosofía</span>
           </div></div></div>
         </a>
-        <a class="xp" href="como-te-ayudo.html" style="--pos:24% 50%">
-          <span class="xp-ph"><img src="img/asesoria.jpg" alt="" loading="lazy" width="1280" height="853"></span>
+        <a class="xp" href="como-te-ayudo.html" style="--pos:61% 30%">
+          <span class="xp-ph"><img src="img/asesoria-gustavo.jpg" alt="" loading="lazy" width="1600" height="1098"></span>
           <span class="xp-tab" aria-hidden="true"><i>02</i><b>Cómo te ayudo</b></span>
           <div class="xp-body"><div class="xp-in"><div class="xp-pad">
             <small class="xp-k"><i>02</i>Cómo te ayudo</small>
@@ -809,8 +812,8 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
             <span class="xp-go">Ver opciones</span>
           </div></div></div>
         </a>
-        <a class="xp" href="inversiones.html" style="--pos:55% 12%">
-          <span class="xp-ph"><img src="img/gustavo-traje.jpg" alt="" loading="lazy" width="1012" height="1600"></span>
+        <a class="xp" href="inversiones.html" style="--pos:50% 16%">
+          <span class="xp-ph"><img src="img/inv-gustavo.jpg" alt="" loading="lazy" width="1000" height="1250"></span>
           <span class="xp-tab" aria-hidden="true"><i>03</i><b>Inversiones</b></span>
           <div class="xp-body"><div class="xp-in"><div class="xp-pad">
             <small class="xp-k"><i>03</i>Inversiones</small>

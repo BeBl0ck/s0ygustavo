@@ -709,6 +709,9 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   .cv { gap: 10px; } .cv-side { gap: 10px; }
 }
 
+/* Service cards: a deeper veil for photographs with a bright background, so the caption stays readable */
+.slide.deep::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, .56) 56%, rgba(0, 0, 0, .86)); }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -737,8 +740,8 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
         <img src="img/asesoria-gustavo.jpg" alt="Gustavo Pérez conversando con una clienta en una sala de juntas" loading="lazy" width="1600" height="1098" style="object-position:70% 30%">
         <div class="cap"><small>Asesoría 1 a 1</small><h3>Una sesión personal sobre finanzas, inversión, seguros, impuestos o arrendamiento.</h3><a class="link" href="contacto.html#asesoria">Pedir mi asesoría</a></div>
       </article>
-      <article class="slide">
-        <img src="img/conferencias.jpg" alt="Público atendiendo una presentación" loading="lazy" width="1280" height="853">
+      <article class="slide deep">
+        <img src="img/conferencias-gustavo.jpg" alt="Gustavo Pérez hablando con un micrófono en un evento" loading="lazy" width="1600" height="893" style="object-position:8% 30%">
         <div class="cap"><small>Conferencias y talleres</small><h3>Finanzas personales sin tecnicismos, para tu equipo o tu evento.</h3><a class="link" href="contacto.html#conferencias">Invitar a Gustavo</a></div>
       </article>
       <article class="slide">

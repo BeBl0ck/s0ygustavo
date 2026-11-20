@@ -709,6 +709,9 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   .cv { gap: 10px; } .cv-side { gap: 10px; }
 }
 
+/* Service cards: a deeper veil for photographs with a bright background, so the caption stays readable */
+.slide.deep::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, .56) 56%, rgba(0, 0, 0, .86)); }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -733,7 +736,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
         <p>Toda inversión implica riesgo y puedes perder parte de tu capital. Que algo haya funcionado antes no garantiza que funcione después, y puede no ser adecuado para ti. Antes de decidir, revisa tu caso con un asesor.</p>
         <button class="btn light" id="gateBtn" type="button">He leído este aviso</button>
       </div>
-      <figure class="gate-ph"><img src="img/gustavo-traje.jpg" alt="Gustavo Pérez de traje gris" width="1012" height="1600"></figure>
+      <figure class="gate-ph"><img src="img/inv-gustavo.jpg" alt="Gustavo Pérez caminando por un pasillo de oficina, de traje negro" width="1000" height="1250"></figure>
     </div>
   </div>
 </section>
