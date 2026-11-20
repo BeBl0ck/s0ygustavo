@@ -712,6 +712,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 /* Service cards: a deeper veil for photographs with a bright background, so the caption stays readable */
 .slide.deep::after { background: linear-gradient(180deg, rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, .56) 56%, rgba(0, 0, 0, .86)); }
 
+/* Merged page: "who I am" follows the four blocks; its anchor clears the floating bar */
+#quien { scroll-margin-top: 88px; }
+.p-filosofia .about { padding-top: 128px; }
+@media (max-width: 900px) { .p-filosofia .about { padding-top: 88px; } }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -719,11 +724,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 <div class="nav" id="nav">
   <nav class="nav-in" aria-label="Principal">
     <a class="mark" href="index.html" aria-label="Gustavo Pérez, inicio">Gustavo Pérez<b>.</b></a>
-    <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="contenido.html">Contenido</a><a href="quien-soy.html">Quién soy</a></div>
+    <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="contenido.html">Contenido</a></div>
     <div class="nav-acts"><a class="btn sm" href="contacto.html">Escríbeme</a><button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button></div>
   </nav>
 </div>
-<div class="menu" id="menu"><a href="index.html" style="--i:0" aria-current="page">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="contenido.html" style="--i:3">Contenido</a><a href="quien-soy.html" style="--i:4">Quién soy</a><a href="contacto.html" style="--i:5">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
+<div class="menu" id="menu"><a href="index.html" style="--i:0" aria-current="page">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="contenido.html" style="--i:3">Contenido</a><a href="contacto.html" style="--i:4">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:5">Instagram</a></div>
 
 <header class="hero2" id="inicio">
   <div class="h2-media"><img src="img/hero-ciudad.jpg" alt="Hombre de traje, de espaldas, mirando la ciudad desde una terraza" width="2048" height="1152" fetchpriority="high"></div>
@@ -767,7 +772,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
           <li><span>02</span><div><h3>Sin vender miedo</h3><p>Explico riesgos y opciones con calma, para que decidas con claridad.</p></div></li>
           <li><span>03</span><div><h3>Un plan que puedas sostener</h3><p>Funciona lo que cabe en tu vida de hoy y se revisa con el tiempo.</p></div></li>
         </ol>
-        <div class="cv-acts"><a class="btn" href="contacto.html">Escríbeme</a><a class="btn line" href="quien-soy.html">Conóceme</a></div>
+        <div class="cv-acts"><a class="btn" href="contacto.html">Escríbeme</a><a class="btn line" href="filosofia.html#quien">Conóceme</a></div>
       </div>
     </div>
   </section>
@@ -834,15 +839,15 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
             <span class="xp-go">Ver lo que publico</span>
           </div></div></div>
         </a>
-        <a class="xp" href="quien-soy.html" style="--pos:54% 30%">
-          <span class="xp-ph"><img src="img/gustavo-sofa.jpg" alt="" loading="lazy" width="1230" height="853"></span>
-          <span class="xp-tab" aria-hidden="true"><i>05</i><b>Quién soy</b></span>
+        <a class="xp" href="https://bebl0ck.mx" target="_blank" rel="noopener" style="--pos:50% 35%">
+          <span class="xp-ph"><img src="img/servicios-rey.jpg" alt="" loading="lazy" width="736" height="736"></span>
+          <span class="xp-tab" aria-hidden="true"><i>05</i><b>Mis servicios</b></span>
           <div class="xp-body"><div class="xp-in"><div class="xp-pad">
-            <small class="xp-k"><i>05</i>Quién soy</small>
-            <h3>Sin promesas mágicas. Con estructura.</h3>
-            <p class="xp-tag">Más de 15 años en el sector financiero.</p>
-            <p class="xp-desc">Trabajo con personas que quieren poner su dinero en orden. Hoy dirijo Be Block, la firma donde mi equipo convierte estas ideas en planes reales.</p>
-            <span class="xp-go">Conóceme</span>
+            <small class="xp-k"><i>05</i>Mis servicios</small>
+            <h3>Be Block.</h3>
+            <p class="xp-tag">La firma que dirijo.</p>
+            <p class="xp-desc">Mi equipo te asesora en finanzas personales, inversión, seguros, contabilidad y fiscal, y arrendamiento.</p>
+            <span class="xp-go">Visitar Be Block</span>
           </div></div></div>
         </a>
       </div>
@@ -876,7 +881,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
         <p>Ideas claras sobre dinero, todos los días en Instagram.</p>
         <a class="btn light sm" href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="justify-self:start">Sígueme en Instagram</a>
       </div>
-      <div class="fcol"><h4>Sitio</h4><a href="index.html">Inicio</a><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="contenido.html">Contenido</a><a href="quien-soy.html">Quién soy</a></div>
+      <div class="fcol"><h4>Sitio</h4><a href="index.html">Inicio</a><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="contenido.html">Contenido</a></div>
       <div class="fcol"><h4>Escríbeme</h4><a href="contacto.html#asesoria">Asesoría</a><a href="contacto.html#conferencias">Conferencias</a><a href="contacto.html#colaboraciones">Colaboraciones</a><a href="contacto.html#otro">Otro tema</a></div>
       <div class="fcol"><h4>Be Block</h4><a href="https://bebl0ck.mx" target="_blank" rel="noopener">bebl0ck.mx</a><span>La firma que dirijo</span></div>
     </div>
