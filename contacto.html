@@ -717,6 +717,9 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .p-filosofia .about { padding-top: 128px; }
 @media (max-width: 900px) { .p-filosofia .about { padding-top: 88px; } }
 
+/* Cards reached from the menu (#servicios) stop clear of the floating bar */
+.xp { scroll-margin-top: 120px; }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
@@ -724,11 +727,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 <div class="nav" id="nav">
   <nav class="nav-in" aria-label="Principal">
     <a class="mark" href="index.html" aria-label="Gustavo Pérez, inicio">Gustavo Pérez<b>.</b></a>
-    <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="contenido.html">Contenido</a></div>
+    <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="index.html#servicios">Mis servicios</a><a href="contenido.html">Contenido</a></div>
     <div class="nav-acts"><a class="btn sm" href="contacto.html">Escríbeme</a><button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button></div>
   </nav>
 </div>
-<div class="menu" id="menu"><a href="index.html" style="--i:0">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="contenido.html" style="--i:3">Contenido</a><a href="contacto.html" style="--i:4" aria-current="page">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:5">Instagram</a></div>
+<div class="menu" id="menu"><a href="index.html" style="--i:0">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="index.html#servicios" style="--i:3">Mis servicios</a><a href="contenido.html" style="--i:4">Contenido</a><a href="contacto.html" style="--i:5" aria-current="page">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
 
 <header class="phero">
   <div class="wrap">
@@ -1153,6 +1156,13 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
       armed = true;
     });
   });
+  /* a link to one of the cards (the menu's "Mis servicios") opens it and brings it into view */
+  const fromHash = () => {
+    const c = cards.find(k => k.id && "#" + k.id === location.hash); if (!c) return;
+    set(c); if (document.activeElement === c) c.blur();
+    setTimeout(() => c.scrollIntoView({ block: "center", behavior: RM ? "auto" : "smooth" }), wide.matches ? 80 : 760);
+  };
+  addEventListener("hashchange", fromHash); fromHash();
 })();
 
 runScroll();
