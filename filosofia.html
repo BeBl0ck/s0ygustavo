@@ -1225,7 +1225,10 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
   /* a link to one of the cards (the menu's "Mis servicios") opens it and brings it into view */
   const fromHash = () => {
     const c = cards.find(k => k.id && "#" + k.id === location.hash); if (!c) return;
-    set(c); if (document.activeElement === c) c.blur();
+    set(c);
+    /* arriving from another page, the browser focuses the target once it has loaded; the open card needs no focus ring */
+    const calm = () => { if (document.activeElement === c) c.blur(); };
+    calm(); addEventListener("load", calm, { once: true }); [300, 1200].forEach(ms => setTimeout(calm, ms));
     setTimeout(() => c.scrollIntoView({ block: "center", behavior: RM ? "auto" : "smooth" }), wide.matches ? 80 : 760);
   };
   addEventListener("hashchange", fromHash); fromHash();
