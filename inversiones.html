@@ -720,6 +720,23 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 /* Cards reached from the menu (#servicios) stop clear of the floating bar */
 .xp { scroll-margin-top: 120px; }
 
+/* Home hero, with the subject on the right of the photograph: the words sit on the left */
+.hero2.h2-left .h2-media img { object-position: 68% 20%; }
+.hero2.h2-left .h2-media::after { background: linear-gradient(90deg, rgba(10, 10, 12, .8) 0%, rgba(10, 10, 12, .58) 30%, rgba(10, 10, 12, .14) 55%, rgba(10, 10, 12, 0) 68%), linear-gradient(180deg, rgba(0, 0, 0, .24) 0%, rgba(0, 0, 0, 0) 28%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .52) 100%); }
+.hero2.h2-left .h2-over { justify-items: start; text-align: left; padding-inline: max(24px, calc((100vw - var(--max)) / 2)); }
+.hero2.h2-left h1 .l1 { font-size: .5em; }
+.hero2.h2-left h1 .hw { justify-items: start; padding-left: 0; font-size: 1.12em; }
+.hero2.h2-left .h2-sub { padding-left: 0; }
+@media (max-width: 700px) {
+  .hero2.h2-left .h2-media img { object-position: 71% 20%; }
+  .hero2.h2-left .h2-media::after { background: linear-gradient(180deg, rgba(0, 0, 0, .22) 0%, rgba(0, 0, 0, .04) 34%, rgba(0, 0, 0, .8) 100%); }
+  .hero2.h2-left h1 .l1 { font-size: .66em; }
+  .hero2.h2-left h1 .hw { font-size: 1.42em; }
+}
+/* Welcome video block: the city photograph keeps Gustavo in frame */
+.zoom .media img { object-position: 64% 30%; }
+@media (max-width: 700px) { .zoom .media img { object-position: 68% 30%; } }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
