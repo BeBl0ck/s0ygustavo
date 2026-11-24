@@ -737,6 +737,14 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .zoom .media img { object-position: 64% 30%; }
 @media (max-width: 700px) { .zoom .media img { object-position: 68% 30%; } }
 
+/* Home hero: a plain white title in capitals, large, and under it the accent word that keeps changing */
+.hero2.h2-big h1 .l1 { font-size: calc(.7em * var(--k1, 1)); line-height: 1.02; }
+.hero2.h2-big h1 .hw { margin-top: .16em; }
+/* On short, wide screens the title also follows the height, so the block never reaches the top of the photograph */
+.hero2.h2-big h1 { font-size: clamp(42px, min(8.4vw, 13.4vh), 128px); }
+.hero2.h2-big h1 .l1 { white-space: nowrap; }
+@media (max-width: 700px) { .hero2.h2-big h1 .l1 { font-size: min(calc(.86em * var(--k1m, var(--k1, 1))), calc((100vw - 52px) / var(--w, 6))); } }
+
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 </style>
 </head>
