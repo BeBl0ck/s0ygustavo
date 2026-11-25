@@ -757,11 +757,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .intro-card:has(.proof) { padding-bottom: 72px; }
 
 /* Home: the one-to-one session in brief. The photograph on one side, what the session is on the other */
-.sesion { padding: 0 24px 128px; background: var(--canvas); scroll-margin-top: 104px; }
+.sesion { padding: 0 24px 16px; background: var(--canvas); scroll-margin-top: 104px; }
 .ses-box { position: relative; max-width: var(--max); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--edge); border-radius: 28px; overflow: hidden; background: #fff; }
 .ses-ph { display: flex; flex-direction: column; margin: 0; background: #161618; }
 /* The photograph stays square so both people fit in it; the quote sits in the dark band under it */
-.ses-ph img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 40%; }
+.ses-ph img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 20% 40%; }
 .ses-ph figcaption { flex: 1; display: grid; align-content: center; gap: 14px; padding: 30px 40px; color: #fff; }
 .ses-ph figcaption b { font-family: var(--f-serif); font-weight: 400; font-style: italic; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.2; text-wrap: balance; }
 .ses-ph figcaption span { font-size: 11px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; opacity: .86; }
@@ -783,7 +783,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .ses-cta + .ses-note { margin-top: 18px; }
 .ses-fine { margin-top: 12px; font-size: 10.5px; font-weight: 500; line-height: 1.6; letter-spacing: .22em; text-transform: uppercase; color: var(--dim); }
 @media (max-width: 1040px) {
-  .sesion { padding: 0 12px 88px; }
+  .sesion { padding: 0 12px 8px; }
   .ses-box { grid-template-columns: 1fr; border-radius: 22px; }
   .ses-ph img { aspect-ratio: 3 / 2; object-position: 50% 40%; }
   .ses-ph figcaption { padding: 24px 24px 26px; }
