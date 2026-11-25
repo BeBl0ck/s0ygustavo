@@ -812,7 +812,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
    as drawn at 1200 px wide, so the panes are written in the picture's own measures and scale with it; --k enlarges them where the
    picture is shown small */
 .camp { padding-block: 24px 28px; }
-.camp-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, min(500px, 46%)); grid-template-rows: 1fr auto; grid-template-areas: "say kv" "brands kv"; gap: 36px 56px;
+.camp-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, min(500px, 46%)); grid-template-areas: "say kv"; gap: 36px 56px;
   padding: 40px; border: 1px solid var(--edge); border-radius: 32px; background: var(--white); }
 .camp-say { grid-area: say; align-self: center; display: grid; justify-items: start; gap: 16px; }
 .camp-say h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(40px, 4.7vw, 66px); line-height: .98; letter-spacing: -.02em; }
@@ -822,9 +822,6 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .camp-say .btn { margin-top: 10px; }
 /* the brands: their own logos in one row. Each file sits on white, which the blend removes; --h is the height each one is shown at,
    chosen so that a wide wordmark and a tall emblem carry the same weight */
-.camp-brands { grid-area: brands; align-self: end; display: grid; gap: 18px; padding-top: 24px; border-top: 1px solid var(--edge); }
-.camp-brands ul { --k: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 30px; margin: 0; padding: 0; list-style: none; }
-.camp-brands img { display: block; width: auto; max-width: none; height: calc(var(--h) * var(--k) * 1px); mix-blend-mode: multiply; }
 .kv { grid-area: kv; align-self: center; justify-self: end; position: relative; container-type: inline-size; width: 100%; max-width: 500px; margin: 0; aspect-ratio: 4 / 5;
   --w: 100cqi; --k: 1.2; --u: calc(var(--k) * .083333cqi); --blur: url(img/camp-kv-blur.jpg); --px: 0; --py: 0; }
 .kv > img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 24px; }
@@ -864,11 +861,10 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 @supports not (width: 1cqi) { .kv-g { display: none; } }
 @media (max-width: 900px) {
   .camp { padding-block: 8px 16px; }
-  .camp-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "say" "kv" "brands"; gap: 28px; padding: 28px 22px 24px; border-radius: 24px; }
+  .camp-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "say" "kv"; gap: 28px; padding: 28px 22px 24px; border-radius: 24px; }
   .camp-say .camp-lead { font-size: 20px; }
   .kv { justify-self: center; max-width: 520px; }
   .kv .kv-card { --x: calc(var(--w) * .028); }
-  .camp-brands ul { --k: .86; gap: 16px 26px; }
 }
 
 /* Inversiones: goals first. Three goals to choose from, and the path that matches the chosen one */
@@ -884,6 +880,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .pa-panel.on { opacity: 1; visibility: visible; translate: 0 0; transition-delay: .08s, .08s, 0s; }
 .pa-panel figure { position: relative; margin: 0; min-height: 460px; background: var(--soft); }
 .pa-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#pa-p1 img { object-position: 8% 50%; }   /* the globe and the books sit on the left of that picture */
 .pa-txt { display: grid; align-content: center; justify-items: start; gap: 18px; padding: 56px; }
 .pa-k { font-size: 12px; font-weight: 500; line-height: 1; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); }
 .pa-txt h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(36px, 3.8vw, 54px); line-height: 1; letter-spacing: -.01em; }
@@ -901,6 +898,29 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 }
 @media (prefers-reduced-motion: reduce) { .pa-panel, .pa-chips button { transition: none; } }
 
+/* Contenido: one strip for every name he has worked with, in black and white, drifting to the left. The files keep their own ground
+   (white, or black for the one that is turned over), so the band is pure white and nothing shows a box. */
+.marcas { padding-block: 0 28px; }
+.mq { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 36px; padding: 22px 0 22px 40px; border-radius: 32px; background: #fff; overflow: hidden; }
+.mq .eyebrow { white-space: nowrap; }
+.mq-view { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%); }
+.mq-track { --k: 1; display: flex; align-items: center; width: max-content; margin: 0; padding: 0; list-style: none; animation: mq 46s linear infinite; }
+.mq-track li { flex: none; display: grid; place-items: center; height: 72px; padding-inline: 36px; }
+.mq-track img { display: block; width: auto; max-width: none; height: calc(var(--h) * var(--k) * 1px); filter: grayscale(1) contrast(1.12); opacity: .86; }
+.mq-track img.inv { filter: invert(1) grayscale(1) contrast(1.12); }
+@keyframes mq { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .mq-view { -webkit-mask-image: none; mask-image: none; }
+  .mq-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
+  .mq-track li[aria-hidden] { display: none; }
+}
+@media (max-width: 900px) {
+  .mq { grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 20px 0 16px; border-radius: 24px; }
+  .mq .eyebrow { padding-inline: 22px; }
+  .mq-track { --k: .86; }
+  .mq-track li { height: 62px; padding-inline: 26px; }
+}
+
 /* Contenido: the showcase. A deck of cards on a tinted panel: one piece in front, the edges of the others fanned behind it. Each card
    has a place in the deck (data-pos, set by the script; without the script the cards keep their written order). A card sent to the
    back first leaves to the right, then slides in underneath */
@@ -912,12 +932,6 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .deck-say p { font-size: 20px; line-height: 1.4; letter-spacing: -.014em; color: var(--t2); }
 .deck-say .btn.line { background: transparent; color: var(--ink); }
 .deck-say .btn.line:hover { background: rgba(29, 29, 31, .06); border-color: var(--ink); }
-/* where he has spoken: each mark sits on its own ground, as supplied (one comes on black, the other on white) */
-.deck-conf { display: grid; gap: 12px; margin-top: 8px; }
-.deck-conf ul { display: flex; flex-wrap: wrap; gap: 12px; margin: 0; padding: 0; list-style: none; }
-.deck-conf li { display: grid; place-items: center; height: 88px; padding: 0 22px; border-radius: 16px; background: #fff; box-shadow: 0 0 0 1px rgba(29, 29, 31, .07); }
-.deck-conf li.dk { background: #000; box-shadow: none; }
-.deck-conf img { display: block; width: auto; max-width: none; height: calc(var(--h) * 1px); }
 .deck-nav { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
 .deck-nav button { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border-radius: 50%; border: 1px solid rgba(29, 29, 31, .26); background: transparent; color: var(--ink); cursor: pointer; transition: background .25s, color .25s, border-color .25s; }
 .deck-nav button:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
