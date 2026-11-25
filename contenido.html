@@ -921,11 +921,12 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   transform-origin: 50% 115%; transition: transform .7s cubic-bezier(.2, .8, .2, 1), filter .5s; will-change: transform; }
 .deck-card > * { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
 .deck-card.fit > * { object-fit: contain; }
+.deck-card.bw > img { filter: grayscale(1) contrast(1.08); }
 .deck-card:not([data-pos]):nth-child(1), .deck-card[data-pos="0"] { z-index: 4; transform: none; filter: none; }
 .deck-card:not([data-pos]):nth-child(2), .deck-card[data-pos="1"] { z-index: 3; transform: translate(8%, 1%) rotate(6deg); filter: brightness(.93); }
 .deck-card:not([data-pos]):nth-child(3), .deck-card[data-pos="2"] { z-index: 2; transform: translate(-7.5%, 1.6%) rotate(-5.5deg); filter: brightness(.87); }
 .deck-card:not([data-pos]):nth-child(4), .deck-card[data-pos="3"] { z-index: 1; transform: translate(1%, 2.4%) rotate(1.5deg) scale(.97); filter: brightness(.82); }
-.deck-card:not([data-pos]):nth-child(5), .deck-card[data-pos="4"] { z-index: 0; transform: translate(1%, 2.4%) rotate(1.5deg) scale(.97); filter: brightness(.82); }
+.deck-card:not([data-pos]):nth-child(5), .deck-card[data-pos="4"], .deck-card:not([data-pos]):nth-child(6), .deck-card[data-pos="5"] { z-index: 0; transform: translate(1%, 2.4%) rotate(1.5deg) scale(.97); filter: brightness(.82); }
 .deck-card.leaving { z-index: 5; transform: translate(112%, -5%) rotate(15deg); transition: transform .42s cubic-bezier(.5, 0, .9, .5); }
 @media (prefers-reduced-motion: reduce) { .deck-card { transition: none; } }
 @media (max-width: 900px) {
@@ -1003,15 +1004,14 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
           <div class="deck-nav">
             <button type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></button>
             <button type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></button>
-            <span class="deck-count"><b>01</b> / 05</span>
+            <span class="deck-count"><b>01</b> / 04</span>
           </div>
         </div>
         <div class="deck" data-deck tabindex="0" role="group" aria-label="Momentos de campañas y eventos">
           <figure class="deck-card"><video muted loop playsinline preload="none" poster="img/camp-escenario.jpg" width="1080" height="1350" aria-label="Gustavo Pérez dando una conferencia sobre el escenario, de frente al público"><source src="media/camp-escenario.mp4" type="video/mp4"></video></figure>
-          <figure class="deck-card"><img src="img/camp-conferencia.jpg" alt="Gustavo Pérez dando una conferencia frente al público en un salón" loading="lazy" width="900" height="1339" style="object-position:50% 28%"></figure>
-          <figure class="deck-card"><video muted loop playsinline preload="none" poster="img/camp-evento.jpg" width="540" height="960" style="object-position:50% 62%" aria-label="Gustavo Pérez presentando con micrófono en el stand de una exposición"><source src="media/camp-evento.mp4" type="video/mp4"></video></figure>
+          <figure class="deck-card bw"><img src="img/camp-conferencia.jpg" alt="Gustavo Pérez dando una conferencia frente al público en un salón" loading="lazy" width="900" height="1339" style="object-position:50% 28%"></figure>
+          <figure class="deck-card"><video muted loop playsinline preload="none" poster="img/camp-expo.jpg" width="864" height="1080" aria-label="Gustavo Pérez en Wealth Expo: frente al muro del evento y dando su conferencia ante el público"><source src="media/camp-expo.mp4" type="video/mp4"></video></figure>
           <figure class="deck-card"><img src="img/camp-microfono.jpg" alt="Gustavo Pérez hablando con micrófono en un evento" loading="lazy" width="1600" height="893" style="object-position:27% 50%"></figure>
-          <figure class="deck-card fit"><video muted loop playsinline preload="none" poster="img/camp-llamada.jpg" width="1200" height="806" aria-label="Webinar en vivo: quien presenta y los asistentes conectados, en la cuadrícula de una videollamada"><source src="media/camp-llamada.mp4" type="video/mp4"></video></figure>
         </div>
       </div>
     </div>
