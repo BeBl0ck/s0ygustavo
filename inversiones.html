@@ -647,7 +647,8 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .intro { position: relative; z-index: 2; margin-top: -110px; padding-inline: 24px; }
 .intro-card { max-width: 940px; margin-inline: auto; display: grid; gap: 22px; justify-items: center; text-align: center; padding: 64px 64px 96px; border-radius: 28px 28px 0 0; background: var(--canvas); }
 .intro-card .rule { display: block; width: 56px; height: 1px; background: var(--ink); opacity: .45; }
-.intro-card h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(25px, 3.3vw, 42px); line-height: 1.12; letter-spacing: .12em; text-transform: uppercase; text-wrap: balance; }
+.intro-card h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(22px, 2.9vw, 36px); line-height: 1.16; letter-spacing: .1em; text-transform: uppercase; text-wrap: balance; }
+.intro-card h2 span { display: block; }
 .intro-card p { max-width: 58ch; font-size: 20px; line-height: 1.5; color: var(--t2); }
 .intro-card .acts { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px 24px; margin-top: 6px; }
 @media (max-width: 700px) {
@@ -819,12 +820,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .camp-say .camp-lead { font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -.015em; color: var(--ink); }
 .camp-say p:not(.camp-lead) { max-width: 54ch; font-size: 17px; line-height: 1.5; color: var(--t2); }
 .camp-say .btn { margin-top: 10px; }
-/* the brands: plain names in the page's serif, no logos */
-.camp-brands { --sep: 18px; grid-area: brands; align-self: end; display: grid; gap: 14px; padding-top: 24px; border-top: 1px solid var(--edge); overflow: hidden; }
-/* every name carries a hairline before it; the list is pulled left by that much, so the first hairline of each row falls outside and is cut off */
-.camp-brands ul { display: flex; flex-wrap: wrap; gap: 6px 0; margin: 0 0 0 calc(var(--sep) * -2 - 1px); padding: 0; list-style: none; }
-.camp-brands li { font-family: var(--f-serif); font-size: clamp(22px, 2.1vw, 28px); line-height: 1.15; letter-spacing: -.01em; color: var(--ink); white-space: nowrap; }
-.camp-brands li::before { content: ""; display: inline-block; width: 1px; height: .78em; margin: 0 var(--sep); background: var(--edge); vertical-align: -.04em; }
+/* the brands: their own logos in one row. Each file sits on white, which the blend removes; --h is the height each one is shown at,
+   chosen so that a wide wordmark and a tall emblem carry the same weight */
+.camp-brands { grid-area: brands; align-self: end; display: grid; gap: 18px; padding-top: 24px; border-top: 1px solid var(--edge); }
+.camp-brands ul { --k: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 30px; margin: 0; padding: 0; list-style: none; }
+.camp-brands img { display: block; width: auto; max-width: none; height: calc(var(--h) * var(--k) * 1px); mix-blend-mode: multiply; }
 .kv { grid-area: kv; align-self: center; justify-self: end; position: relative; container-type: inline-size; width: 100%; max-width: 500px; margin: 0; aspect-ratio: 4 / 5;
   --w: 100cqi; --k: 1.2; --u: calc(var(--k) * .083333cqi); --blur: url(img/camp-kv-blur.jpg); --px: 0; --py: 0; }
 .kv > img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 24px; }
@@ -868,7 +868,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   .camp-say .camp-lead { font-size: 20px; }
   .kv { justify-self: center; max-width: 520px; }
   .kv .kv-card { --x: calc(var(--w) * .028); }
-  .camp-brands { --sep: 13px; }
+  .camp-brands ul { --k: .86; gap: 16px 26px; }
 }
 
 /* Inversiones: goals first. Three goals to choose from, and the path that matches the chosen one */
@@ -925,6 +925,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .deck-card:not([data-pos]):nth-child(2), .deck-card[data-pos="1"] { z-index: 3; transform: translate(8%, 1%) rotate(6deg); filter: brightness(.93); }
 .deck-card:not([data-pos]):nth-child(3), .deck-card[data-pos="2"] { z-index: 2; transform: translate(-7.5%, 1.6%) rotate(-5.5deg); filter: brightness(.87); }
 .deck-card:not([data-pos]):nth-child(4), .deck-card[data-pos="3"] { z-index: 1; transform: translate(1%, 2.4%) rotate(1.5deg) scale(.97); filter: brightness(.82); }
+.deck-card:not([data-pos]):nth-child(5), .deck-card[data-pos="4"] { z-index: 0; transform: translate(1%, 2.4%) rotate(1.5deg) scale(.97); filter: brightness(.82); }
 .deck-card.leaving { z-index: 5; transform: translate(112%, -5%) rotate(15deg); transition: transform .42s cubic-bezier(.5, 0, .9, .5); }
 @media (prefers-reduced-motion: reduce) { .deck-card { transition: none; } }
 @media (max-width: 900px) {
