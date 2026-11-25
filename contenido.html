@@ -692,6 +692,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .cv-list h3 { font-family: var(--f-serif); font-weight: 400; font-size: 21px; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; }
 .cv-list p { margin-top: 6px; font-family: var(--f-serif); font-size: 19.5px; line-height: 1.42; letter-spacing: .004em; color: var(--soft); }
 .cv-acts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+.cv-note { margin-top: 20px; max-width: 46em; font-size: 13px; line-height: 1.5; color: var(--lab); }
 .credo .btn.line { background: transparent; border-color: rgba(var(--accent-rgb), .7); color: var(--ink); }
 .credo .btn.line:hover { background: rgba(var(--accent-rgb), .12); border-color: var(--accent); }
 .credo.negro .btn, .credo.gris .btn { background: var(--accent-2); border-color: var(--accent-2); color: #1d1d1f; }
@@ -705,6 +706,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .cv-main { aspect-ratio: 68 / 100; }
 .cv-side { display: grid; grid-template-rows: 1fr 1.1fr 1fr; gap: 12px; height: 100%; min-height: 0; }
 .cv-t img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.84); }
+.cv-side .cv-t img { filter: grayscale(1) contrast(1.06); }   /* the three on the right: black and white */
 @media (max-width: 900px) {
   .credo { padding-block: 88px; }
   .cv-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "head" "fig" "body"; }
@@ -764,6 +766,9 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 
 /* Home: the one-to-one session in brief. The photograph on one side, what the session is on the other */
 .sesion { padding: 0 24px 16px; background: var(--canvas); scroll-margin-top: 104px; }
+/* with the "Por dónde empezar" section hidden, the questions block follows the session card directly: give it air */
+.sesion + section[aria-labelledby="h-island"] { margin-top: 72px; }
+@media (max-width: 700px) { .sesion + section[aria-labelledby="h-island"] { margin-top: 44px; } }
 .ses-box { position: relative; max-width: var(--max); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--edge); border-radius: 28px; overflow: hidden; background: #fff; }
 .ses-ph { display: flex; flex-direction: column; margin: 0; background: #161618; }
 /* The photograph stays square so both people fit in it; the quote sits in the dark band under it */
@@ -976,11 +981,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 <div class="nav" id="nav">
   <nav class="nav-in" aria-label="Principal">
     <a class="mark" href="index.html" aria-label="Gustavo Pérez, inicio">Gustavo Pérez<b>.</b></a>
-    <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="index.html#servicios">Mis servicios</a><a href="contenido.html" aria-current="page">Contenido</a></div>
+    <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener">Mis servicios</a><a href="contenido.html" aria-current="page">Contenido</a></div>
     <div class="nav-acts"><a class="btn sm" href="contacto.html">Escríbeme</a><button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button></div>
   </nav>
 </div>
-<div class="menu" id="menu"><a href="index.html" style="--i:0">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="index.html#servicios" style="--i:3">Mis servicios</a><a href="contenido.html" style="--i:4" aria-current="page">Contenido</a><a href="contacto.html" style="--i:5">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
+<div class="menu" id="menu"><a href="index.html" style="--i:0">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener" style="--i:3">Mis servicios</a><a href="contenido.html" style="--i:4" aria-current="page">Contenido</a><a href="contacto.html" style="--i:5">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
 
 <header class="phero tight">
   <div class="wrap">

@@ -692,6 +692,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .cv-list h3 { font-family: var(--f-serif); font-weight: 400; font-size: 21px; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; }
 .cv-list p { margin-top: 6px; font-family: var(--f-serif); font-size: 19.5px; line-height: 1.42; letter-spacing: .004em; color: var(--soft); }
 .cv-acts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+.cv-note { margin-top: 20px; max-width: 46em; font-size: 13px; line-height: 1.5; color: var(--lab); }
 .credo .btn.line { background: transparent; border-color: rgba(var(--accent-rgb), .7); color: var(--ink); }
 .credo .btn.line:hover { background: rgba(var(--accent-rgb), .12); border-color: var(--accent); }
 .credo.negro .btn, .credo.gris .btn { background: var(--accent-2); border-color: var(--accent-2); color: #1d1d1f; }
@@ -705,6 +706,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .cv-main { aspect-ratio: 68 / 100; }
 .cv-side { display: grid; grid-template-rows: 1fr 1.1fr 1fr; gap: 12px; height: 100%; min-height: 0; }
 .cv-t img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.84); }
+.cv-side .cv-t img { filter: grayscale(1) contrast(1.06); }   /* the three on the right: black and white */
 @media (max-width: 900px) {
   .credo { padding-block: 88px; }
   .cv-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; grid-template-areas: "head" "fig" "body"; }
@@ -764,6 +766,9 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 
 /* Home: the one-to-one session in brief. The photograph on one side, what the session is on the other */
 .sesion { padding: 0 24px 16px; background: var(--canvas); scroll-margin-top: 104px; }
+/* with the "Por dónde empezar" section hidden, the questions block follows the session card directly: give it air */
+.sesion + section[aria-labelledby="h-island"] { margin-top: 72px; }
+@media (max-width: 700px) { .sesion + section[aria-labelledby="h-island"] { margin-top: 44px; } }
 .ses-box { position: relative; max-width: var(--max); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--edge); border-radius: 28px; overflow: hidden; background: #fff; }
 .ses-ph { display: flex; flex-direction: column; margin: 0; background: #161618; }
 /* The photograph stays square so both people fit in it; the quote sits in the dark band under it */
@@ -976,11 +981,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 <div class="nav" id="nav">
   <nav class="nav-in" aria-label="Principal">
     <a class="mark" href="index.html" aria-label="Gustavo Pérez, inicio">Gustavo Pérez<b>.</b></a>
-    <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="#servicios">Mis servicios</a><a href="contenido.html">Contenido</a></div>
+    <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener">Mis servicios</a><a href="contenido.html">Contenido</a></div>
     <div class="nav-acts"><a class="btn sm" href="contacto.html">Escríbeme</a><button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button></div>
   </nav>
 </div>
-<div class="menu" id="menu"><a href="index.html" style="--i:0" aria-current="page">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="#servicios" style="--i:3">Mis servicios</a><a href="contenido.html" style="--i:4">Contenido</a><a href="contacto.html" style="--i:5">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
+<div class="menu" id="menu"><a href="index.html" style="--i:0" aria-current="page">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener" style="--i:3">Mis servicios</a><a href="contenido.html" style="--i:4">Contenido</a><a href="contacto.html" style="--i:5">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
 
 <header class="hero2 h2-left h2-big" id="inicio">
   <div class="h2-media"><img src="img/hero-marmol.jpg" alt="Gustavo Pérez de traje gris, de pie frente a un muro de mármol oscuro" width="1920" height="1080" fetchpriority="high"></div>
@@ -1015,27 +1020,28 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   <section class="credo" aria-labelledby="h-credo">
     <div class="wrap cv-grid">
       <div class="cv-head" data-rv>
-        <p class="cv-k"><i aria-hidden="true"></i>Gustavo Pérez · Mi convicción</p>
-        <h2 id="h-credo">Ganar más ayuda.</h2>
-        <p class="cv-lead">Pero lo que cambia tu vida es tener estructura para lo que ya ganas. <em>Trabajo todos los días con personas que quieren poner su dinero en orden. Casi nunca les falta ingreso. Les falta estructura.</em></p>
+        <p class="cv-k"><i aria-hidden="true"></i>Gustavo Pérez · Inversiones</p>
+        <h2 id="h-credo">Primero el objetivo.</h2>
+        <p class="cv-lead">Después, el camino. <em>Participo con mi equipo en tres tipos de inversión, y cada uno responde a algo distinto que puedes buscar con tu dinero.</em></p>
       </div>
       <figure class="cv-fig" data-rv style="--d:1">
-        <div class="cv" role="img" aria-label="Gustavo Pérez: retrato de estudio, en una conferencia y escribiendo en un café; al centro, revistas y unos lentes sobre una mesa">
+        <div class="cv" role="img" aria-label="Retrato de estudio de Gustavo Pérez; a la derecha, en blanco y negro: autos nuevos en fila, una gráfica de velas y un edificio con trazos de plano">
           <div class="cv-t cv-main"><img src="img/cv-estudio.jpg" alt="" loading="lazy" width="680" height="1000"></div>
           <div class="cv-side">
-            <div class="cv-t"><img src="img/cv-conferencia.jpg" alt="" loading="lazy" width="520" height="561"></div>
-            <div class="cv-t"><img src="img/cv-libros.jpg" alt="" loading="lazy" width="520" height="618"></div>
-            <div class="cv-t"><img src="img/cv-cafe.jpg" alt="" loading="lazy" width="520" height="561"></div>
+            <div class="cv-t"><img src="img/cv-autos.jpg" alt="" loading="lazy" width="736" height="794"></div>
+            <div class="cv-t"><img src="img/cv-grafica.jpg" alt="" loading="lazy" width="631" height="750"></div>
+            <div class="cv-t"><img src="img/cv-edificio.jpg" alt="" loading="lazy" width="736" height="794"></div>
           </div>
         </div>
       </figure>
       <div class="cv-body" data-rv>
         <ol class="cv-list">
-          <li><span>01</span><div><h3>Números reales</h3><p>Hablo con cifras de verdad, no con proyecciones de folleto.</p></div></li>
-          <li><span>02</span><div><h3>Sin vender miedo</h3><p>Explico riesgos y opciones con calma, para que decidas con claridad.</p></div></li>
-          <li><span>03</span><div><h3>Un plan que puedas sostener</h3><p>Funciona lo que cabe en tu vida de hoy y se revisa con el tiempo.</p></div></li>
+          <li><span>01</span><div><h3>Recibir ingresos periódicos</h3><p>Arrendamiento: activos que se rentan a personas y empresas bajo contrato.</p></div></li>
+          <li><span>02</span><div><h3>Hacerlo crecer a largo plazo</h3><p>Fondos de inversión: portafolios diversificados, elegidos según tu perfil y tu plazo.</p></div></li>
+          <li><span>03</span><div><h3>Respaldarlo en algo tangible</h3><p>Propiedades para renta, con mi equipo a cargo de la gestión.</p></div></li>
         </ol>
-        <div class="cv-acts"><a class="btn" href="contacto.html">Escríbeme</a><a class="btn line" href="filosofia.html#quien">Conóceme</a></div>
+        <div class="cv-acts"><a class="btn" href="inversiones.html">Ver inversiones</a><a class="btn line" href="contacto.html#inversiones">Escríbeme</a></div>
+        <p class="cv-note">Información general, no una recomendación personalizada. Toda inversión implica riesgo.</p>
       </div>
     </div>
   </section>
@@ -1061,72 +1067,6 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
         <a class="btn ses-cta" href="https://buy.stripe.com/fZueV562S22ffha6nDeEo02" rel="noopener">Quiero mi diagnóstico</a>
         <p class="ses-note">Al terminar el pago eliges el día y la hora. ¿Dudas? <a href="contacto.html#asesoria">Escríbeme antes</a>.</p>
         <p class="ses-fine">Orientación y acompañamiento. No se garantizan rendimientos.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="explore" aria-labelledby="h-exp">
-    <div class="wrap">
-      <div class="exp-head" data-rv>
-        <span class="eyebrow">Por dónde empezar</span>
-        <h2 class="h" id="h-exp">Elige por dónde entrar.</h2>
-      </div>
-      <div class="xp-row" id="xp" style="--n:5" data-rv>
-        <a class="xp on" href="inversiones.html" style="--pos:86% 30%">
-          <span class="xp-ph"><img src="img/inv-grafica.jpg" alt="" loading="lazy" width="736" height="1313"></span>
-          <span class="xp-tab" aria-hidden="true"><i>01</i><b>Inversiones</b></span>
-          <div class="xp-body"><div class="xp-in"><div class="xp-pad">
-            <small class="xp-k"><i>01</i>Inversiones</small>
-            <h3>Tres formas de invertir conmigo.</h3>
-            <p class="xp-tag">Arrendamiento, fondos de inversión y propiedades para renta.</p>
-            <p class="xp-desc">Los tipos de inversión en los que participo con mi equipo. Cada uno tiene su riesgo, su plazo y su monto, así que primero se revisa si es para ti.</p>
-            <span class="xp-go">Ver inversiones</span>
-          </div></div></div>
-        </a>
-        <a class="xp" data-key="servicios" href="https://bebl0ck.mx" target="_blank" rel="noopener" style="--pos:50% 35%">
-          <span class="xp-ph"><img src="img/servicios-rey.jpg" alt="" loading="lazy" width="736" height="736"></span>
-          <span class="xp-tab" aria-hidden="true"><i>02</i><b>Mis servicios</b></span>
-          <div class="xp-body"><div class="xp-in"><div class="xp-pad">
-            <small class="xp-k"><i>02</i>Mis servicios</small>
-            <h3>Be Block.</h3>
-            <p class="xp-tag">La firma que dirijo.</p>
-            <p class="xp-desc">Mi equipo te asesora en finanzas personales, inversión, seguros, contabilidad y fiscal, y arrendamiento.</p>
-            <span class="xp-go">Visitar Be Block</span>
-          </div></div></div>
-        </a>
-        <a class="xp" href="contacto.html" style="--pos:61% 30%">
-          <span class="xp-ph"><img src="img/asesoria-gustavo.jpg" alt="" loading="lazy" width="1600" height="1098"></span>
-          <span class="xp-tab" aria-hidden="true"><i>03</i><b>Cómo te ayudo</b></span>
-          <div class="xp-body"><div class="xp-in"><div class="xp-pad">
-            <small class="xp-k"><i>03</i>Cómo te ayudo</small>
-            <h3>Cuatro formas de trabajar juntos.</h3>
-            <p class="xp-tag">Tú eliges el punto de partida.</p>
-            <p class="xp-desc">Asesoría 1 a 1 con mi equipo en Be Block, conferencias y talleres, contenido diario en Instagram y colaboraciones con marcas.</p>
-            <span class="xp-go">Dejar mis datos</span>
-          </div></div></div>
-        </a>
-        <a class="xp" href="contenido.html" style="--pos:100% 20%">
-          <span class="xp-ph"><img src="img/contenido-redes.jpg" alt="" loading="lazy" width="1400" height="1400"></span>
-          <span class="xp-tab" aria-hidden="true"><i>04</i><b>Contenido</b></span>
-          <div class="xp-body"><div class="xp-in"><div class="xp-pad">
-            <small class="xp-k"><i>04</i>Contenido</small>
-            <h3>Finanzas claras, todos los días.</h3>
-            <p class="xp-tag">Videos cortos y sin tecnicismos, en Instagram.</p>
-            <p class="xp-desc">Inversión a largo plazo, tu dinero frente a la inflación, patrimonio para empresarios y lo que mueve a los mercados.</p>
-            <span class="xp-go">Ver lo que publico</span>
-          </div></div></div>
-        </a>
-        <a class="xp" href="filosofia.html" style="--pos:50% 30%">
-          <span class="xp-ph"><img src="img/gustavo-columnas.jpg" alt="" loading="lazy" width="1125" height="780"></span>
-          <span class="xp-tab" aria-hidden="true"><i>05</i><b>Mi filosofía</b></span>
-          <div class="xp-body"><div class="xp-in"><div class="xp-pad">
-            <small class="xp-k"><i>05</i>Mi filosofía</small>
-            <h3>Cuatro bloques, en orden.</h3>
-            <p class="xp-tag">Primero la base. Después el crecimiento.</p>
-            <p class="xp-desc">Ordenar, proteger, financiar e invertir. Así pienso el dinero, y por qué cada bloque sostiene al siguiente.</p>
-            <span class="xp-go">Ver mi filosofía</span>
-          </div></div></div>
-        </a>
       </div>
     </div>
   </section>
