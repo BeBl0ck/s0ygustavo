@@ -903,6 +903,35 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 }
 @media (prefers-reduced-motion: reduce) { .pa-panel, .pa-chips button { transition: none; } }
 
+/* Home: who he is, compact, on a tinted band above the questions */
+.qs { margin-top: 72px; padding-block: 80px; background: var(--wash); scroll-margin-top: 88px; }
+.qs + section[aria-labelledby="h-island"] { margin-top: 72px; }
+.qs-top { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); align-items: center; gap: 64px; }
+.qs-ph { margin: 0; aspect-ratio: 4 / 5; border-radius: 24px; overflow: hidden; background: rgba(29, 29, 31, .08); }
+.qs-ph img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.qs-text { display: grid; justify-items: start; gap: 16px; }
+.qs-text h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(26px, 3vw, 40px); line-height: 1.12; letter-spacing: .08em; text-transform: uppercase; text-wrap: balance; }
+.qs-lead { max-width: 34em; font-family: var(--f-serif); font-size: clamp(20px, 1.7vw, 23px); line-height: 1.45; color: var(--ink); }
+.qs-note { max-width: 44em; font-size: 16px; line-height: 1.55; color: var(--t2); }
+.qs-note .link { display: flex; width: max-content; margin-top: 8px; }
+.qs-creds { display: grid; gap: 12px; margin-top: 10px; padding-top: 22px; border-top: 1px solid rgba(29, 29, 31, .14); width: 100%; }
+.qs-creds > span { font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+.qs-creds ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.qs-creds li { padding: 8px 14px; border: 1px solid rgba(29, 29, 31, .2); border-radius: 999px; font-size: 14px; line-height: 1.2; color: var(--ink); }
+.qs-feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 40px; margin: 48px 0 0; padding: 36px 0 0; list-style: none; border-top: 1px solid rgba(29, 29, 31, .14); }
+.qs-feats li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 16px; align-items: start; }
+.qs-feats i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: var(--ink); }
+.qs-feats svg { width: 20px; height: 20px; }
+.qs-feats h3 { font-size: 17px; font-weight: 600; line-height: 1.25; letter-spacing: -.01em; }
+.qs-feats p { margin-top: 4px; font-size: 15px; line-height: 1.45; color: var(--t2); }
+@media (max-width: 900px) {
+  .qs { margin-top: 44px; padding-block: 48px; }
+  .qs + section[aria-labelledby="h-island"] { margin-top: 44px; }
+  .qs-top { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+  .qs-ph { width: min(240px, 62%); border-radius: 20px; }
+  .qs-feats { grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 34px; padding-top: 28px; }
+}
+
 /* Contenido: one strip for every name he has worked with, in black and white, drifting to the left. The files keep their own ground
    (white, or black for the one that is turned over), so the band is pure white and nothing shows a box. */
 .marcas { padding-block: 0 28px; }
@@ -981,11 +1010,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 <div class="nav" id="nav">
   <nav class="nav-in" aria-label="Principal">
     <a class="mark" href="index.html" aria-label="Gustavo Pérez, inicio">Gustavo Pérez<b>.</b></a>
-    <div class="links"><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener">Mis servicios</a><a href="contenido.html" aria-current="page">Contenido</a></div>
+    <div class="links"><a href="index.html#quien">Quién soy</a><a href="inversiones.html">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener">Mis servicios</a><a href="contenido.html" aria-current="page">Contenido</a></div>
     <div class="nav-acts"><a class="btn sm" href="contacto.html">Escríbeme</a><button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button></div>
   </nav>
 </div>
-<div class="menu" id="menu"><a href="index.html" style="--i:0">Inicio</a><a href="filosofia.html" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener" style="--i:3">Mis servicios</a><a href="contenido.html" style="--i:4" aria-current="page">Contenido</a><a href="contacto.html" style="--i:5">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
+<div class="menu" id="menu"><a href="index.html" style="--i:0">Inicio</a><a href="index.html#quien" style="--i:1">Quién soy</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener" style="--i:3">Mis servicios</a><a href="contenido.html" style="--i:4" aria-current="page">Contenido</a><a href="contacto.html" style="--i:5">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
 
 <header class="phero tight">
   <div class="wrap">
@@ -1088,7 +1117,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
         <p>Ideas claras sobre dinero, todos los días en Instagram.</p>
         <a class="btn light sm" href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="justify-self:start">Sígueme en Instagram</a>
       </div>
-      <div class="fcol"><h4>Sitio</h4><a href="index.html">Inicio</a><a href="filosofia.html">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="contenido.html">Contenido</a></div>
+      <div class="fcol"><h4>Sitio</h4><a href="index.html">Inicio</a><a href="index.html#quien">Quién soy</a><a href="inversiones.html">Inversiones</a><a href="contenido.html">Contenido</a></div>
       <div class="fcol"><h4>Escríbeme</h4><a href="contacto.html#asesoria">Asesoría</a><a href="contacto.html#conferencias">Conferencias</a><a href="contacto.html#colaboraciones">Colaboraciones</a><a href="contacto.html#otro">Otro tema</a></div>
       <div class="fcol"><h4>Be Block</h4><a href="https://bebl0ck.mx" target="_blank" rel="noopener">bebl0ck.mx</a><span>La firma que dirijo</span></div>
     </div>
