@@ -903,6 +903,49 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 }
 @media (prefers-reduced-motion: reduce) { .pa-panel, .pa-chips button { transition: none; } }
 
+/* Home: the two ways to start, side by side: the paid one-to-one session (dark) and investing, which starts with a message (light) */
+.dos { padding-top: 88px; scroll-margin-top: 72px; }
+.dos + section[aria-labelledby="h-island"] { margin-top: 72px; }
+.dos-k { display: flex; align-items: center; gap: 18px; font-size: 12px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); }
+.dos-k i { flex: none; width: 56px; height: 1px; background: currentColor; }
+.dos-head h2 { margin-top: 22px; font-family: var(--f-serif); font-weight: 400; font-size: clamp(34px, 5.2vw, 70px); line-height: 1; letter-spacing: .04em; text-transform: uppercase; text-wrap: balance; }
+.dos-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 44px; }
+.dos-card { position: relative; display: flex; flex-direction: column; align-items: flex-start; padding: 34px 40px 30px; border: 1px solid var(--edge); border-radius: 28px; background: #fff; overflow: hidden; }
+.dos-card.dk { border-color: var(--ink); background: var(--ink); color: #fff; }
+.dos-tag { position: absolute; top: 0; right: 0; padding: 12px 18px 12px 20px; border-radius: 0 0 0 14px; background: var(--accent-2); color: var(--ink); font-size: 11px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; }
+.dos-lab { font-family: var(--f-serif); font-size: 15px; line-height: 1.2; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
+.dos-card.dk .dos-lab { color: var(--accent-2); }
+.dos-big { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; margin-top: 16px; }
+.dos-big b { font-family: var(--f-serif); font-weight: 400; font-size: clamp(32px, 3vw, 42px); line-height: 1; }
+.dos-big i { font-family: var(--f-serif); font-size: 18px; opacity: .78; }
+.dos-txt { margin-top: 14px; max-width: 34em; font-family: var(--f-serif); font-size: 18px; line-height: 1.38; color: rgba(29, 29, 31, .78); }
+.dos-card.dk .dos-txt { color: rgba(255, 255, 255, .86); }
+.dos-it { margin-top: 6px; max-width: 36em; font-family: var(--f-serif); font-style: italic; font-size: 16.5px; line-height: 1.35; color: var(--accent-2); }
+.dos-card > :nth-last-child(2) { margin-bottom: 22px; }
+.dos-card .btn { width: 100%; height: 48px; margin-top: auto; }
+.dos-card .btn.line { background: transparent; color: var(--ink); }
+.dos-card .btn.line:hover { background: rgba(29, 29, 31, .06); border-color: var(--ink); }
+.dos-fine { margin-top: 22px; font-size: 10.5px; font-weight: 500; line-height: 1.6; letter-spacing: .22em; text-transform: uppercase; color: var(--dim); }
+@media (max-width: 900px) {
+  .dos { padding-top: 56px; }
+  .dos + section[aria-labelledby="h-island"] { margin-top: 44px; }
+  .dos-grid { grid-template-columns: minmax(0, 1fr); margin-top: 30px; }
+  .dos-card { padding: 44px 24px 24px; border-radius: 22px; }
+}
+/* Home: answers under the questions block; one opens at a time is not enforced, each simply unfolds */
+.faq { width: min(820px, 100% - 48px); margin: 44px auto 0; }
+.faq .eyebrow { margin-bottom: 14px; text-align: center; }
+.faq details { border-top: 1px solid var(--edge); }
+.faq details:last-child { border-bottom: 1px solid var(--edge); }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 4px; font-size: 18px; font-weight: 600; line-height: 1.3; letter-spacing: -.01em; cursor: pointer; list-style: none; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; font-weight: 400; font-size: 24px; line-height: 1; color: var(--accent); transition: rotate .3s var(--ease); }
+.faq details[open] summary::after { rotate: 45deg; }
+.faq summary:hover { color: var(--accent); }
+.faq details p { max-width: 46em; padding: 0 4px 22px; font-size: 17px; line-height: 1.55; color: var(--t2); }
+.faq details a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; white-space: nowrap; }
+@media (max-width: 700px) { .faq summary { font-size: 17px; padding-block: 18px; } .faq details p { font-size: 16px; } }
+
 /* Home: who he is, compact, on a tinted band above the questions */
 .qs { margin-top: 72px; padding-block: 80px; background: var(--wash); scroll-margin-top: 88px; }
 .qs + section[aria-labelledby="h-island"] { margin-top: 72px; }
@@ -1051,7 +1094,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
       <div class="cv-head" data-rv>
         <p class="cv-k"><i aria-hidden="true"></i>Gustavo Pérez · Inversiones</p>
         <h2 id="h-credo">Primero el objetivo.</h2>
-        <p class="cv-lead">Después, el camino. <em>Participo con mi equipo en tres tipos de inversión, y cada uno responde a algo distinto que puedes buscar con tu dinero.</em></p>
+        <p class="cv-lead">Después, el camino. <em>Hay más de una forma de invertir, y cada una responde a algo distinto que puedes buscar con tu dinero. Estas son algunas de las que trabajo con mi equipo.</em></p>
       </div>
       <figure class="cv-fig" data-rv style="--d:1">
         <div class="cv" role="img" aria-label="Retrato de estudio de Gustavo Pérez; a la derecha, en blanco y negro: autos nuevos en fila, una gráfica de velas y un edificio con trazos de plano">
@@ -1123,6 +1166,32 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
     </div>
   </section>
 
+  <section class="dos" id="empezar" aria-labelledby="h-dos">
+    <div class="wrap">
+      <div class="dos-head" data-rv>
+        <p class="dos-k"><i aria-hidden="true"></i>Cómo empezar</p>
+        <h2 id="h-dos">Dos formas de empezar.</h2>
+      </div>
+      <div class="dos-grid" data-rv style="--d:1">
+        <article class="dos-card dk">
+          <span class="dos-tag">Pago único</span>
+          <p class="dos-lab">Diagnóstico 1 a 1</p>
+          <p class="dos-big"><b>$899 MXN</b><i>pago único</i></p>
+          <p class="dos-txt">Una sesión uno a uno con tus números y tu situación real. Sales con tu diagnóstico por escrito y el siguiente paso definido.</p>
+          <p class="dos-it">Sin mensualidades ni membresías. Al terminar el pago eliges el día y la hora.</p>
+          <a class="btn light" href="https://buy.stripe.com/fZueV562S22ffha6nDeEo02" rel="noopener">Quiero mi diagnóstico</a>
+        </article>
+        <article class="dos-card">
+          <p class="dos-lab">Inversiones</p>
+          <p class="dos-big"><b>A tu medida</b></p>
+          <p class="dos-txt">Cada inversión tiene su riesgo, su plazo y su monto, así que primero revisamos si es para ti. Empieza con un mensaje.</p>
+          <a class="btn line" href="contacto.html#inversiones">Platiquemos si es para ti</a>
+        </article>
+      </div>
+      <p class="dos-fine">Orientación y acompañamiento · No se garantizan rendimientos</p>
+    </div>
+  </section>
+
   <section aria-labelledby="h-island">
     <div class="wrap">
       <div class="island" data-rv>
@@ -1132,6 +1201,17 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
         </div>
         <div class="track" aria-hidden="true" id="t1"></div>
         <div class="track rev" aria-hidden="true" id="t2"></div>
+        <div class="faq">
+          <p class="eyebrow">Antes de empezar</p>
+          <details><summary>¿Qué es el diagnóstico 1 a 1?</summary><p>Una sesión uno a uno en la que revisamos tus números y tu situación real. Vemos el panorama completo, detectamos qué te frena y qué conviene hacer primero. Sales con tu diagnóstico por escrito y el siguiente paso definido.</p></details>
+          <details><summary>¿Cuánto cuesta? ¿Hay mensualidades?</summary><p>$899 MXN en un pago único. No hay mensualidades ni membresías.</p></details>
+          <details><summary>¿Cómo agendo mi sesión?</summary><p>Al terminar el pago eliges el día y la hora que te acomoden.</p></details>
+          <details><summary>¿Me sirve si mi duda es sobre mi negocio?</summary><p>Sí. La sesión parte de tu situación, sea personal o de tu negocio, y la revisa completa, no como un tema aislado.</p></details>
+          <details><summary>¿Cómo sé qué inversión es para mí?</summary><p>Cada inversión tiene su riesgo, su plazo y su monto. Por eso primero revisamos tu caso y después vemos si alguna tiene sentido para ti. Empieza con un mensaje.</p></details>
+          <details><summary>¿Puedo disponer de mi dinero cuando quiera?</summary><p>Depende de la inversión. Algunas piden dejar tu capital invertido durante varios años, así que el plazo se revisa antes de decidir.</p></details>
+          <details><summary>¿Garantizan rendimientos?</summary><p>No. Toda inversión implica riesgo y puedes perder parte de tu capital. Que algo haya funcionado antes no garantiza que funcione después. Lo que ofrezco es orientación y acompañamiento.</p></details>
+          <details><summary>Tengo dudas antes de pagar, ¿qué hago?</summary><p>Escríbeme antes. Cuéntame tu caso y te digo si el diagnóstico es para ti. <a href="contacto.html#asesoria">Ir a contacto</a></p></details>
+        </div>
       </div>
     </div>
   </section>
