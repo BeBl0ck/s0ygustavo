@@ -604,7 +604,16 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .cf-row label { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
 .cf input[type="text"], .cf input[type="email"], .cf input[type="tel"], .cf select { width: 100%; height: 52px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--edge); background: var(--canvas); font-size: 17px; color: var(--ink); outline: 0; -webkit-appearance: none; appearance: none; transition: border-color .2s, box-shadow .2s, border-radius .3s ease-out; }
 .cf input:hover, .cf select:hover { border-radius: 16px; }
-.cf input:focus, .cf select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .16); }
+.cf input:focus, .cf select:focus, .cf textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .16); }
+/* the forms of each investment: free answers, the privacy link, and the investment's picture beside the form */
+.cf textarea { display: block; width: 100%; min-height: 104px; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--edge); background: var(--canvas); font: inherit; font-size: 17px; line-height: 1.4; color: var(--ink); outline: 0; resize: vertical; -webkit-appearance: none; appearance: none; transition: border-color .2s, box-shadow .2s, border-radius .3s ease-out; }
+.cf textarea:hover { border-radius: 16px; }
+.cf-legal a { text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
+.cf-legal a:hover { color: var(--ink); }
+.cf-fig { margin: 0 0 14px; aspect-ratio: 4 / 3; border-radius: 24px; overflow: hidden; background: var(--soft); }
+.cf-fig img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.p-invform .phero h1 { max-width: 20ch; font-size: clamp(42px, 5.8vw, 82px); }
+@media (max-width: 900px) { .cf-fig { display: none; } }
 .cf .bad { border-color: #b3261e; }
 .cf select:invalid { color: var(--dim); }
 .cf-sel { position: relative; }
@@ -772,7 +781,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .ses-box { position: relative; max-width: var(--max); margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--edge); border-radius: 28px; overflow: hidden; background: #fff; }
 .ses-ph { display: flex; flex-direction: column; margin: 0; background: #161618; }
 /* The photograph stays square so both people fit in it; the quote sits in the dark band under it */
-.ses-ph img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 20% 40%; }
+.ses-ph img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 50%; }
 .ses-ph figcaption { flex: 1; display: grid; align-content: center; gap: 14px; padding: 30px 40px; color: #fff; }
 .ses-ph figcaption b { font-family: var(--f-serif); font-weight: 400; font-style: italic; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.2; text-wrap: balance; }
 .ses-ph figcaption span { font-size: 11px; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; opacity: .86; }
@@ -796,7 +805,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 @media (max-width: 1040px) {
   .sesion { padding: 0 12px 8px; }
   .ses-box { grid-template-columns: 1fr; border-radius: 22px; }
-  .ses-ph img { aspect-ratio: 3 / 2; object-position: 50% 40%; }
+  .ses-ph img { aspect-ratio: 3 / 2; object-position: 50% 72%; }
   .ses-ph figcaption { padding: 24px 24px 26px; }
   .ses-in { padding: 64px 24px 36px; }
   .ses-list li { padding-left: 30px; font-size: 19px; }
@@ -809,7 +818,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 }
 
 /* Investments notice: the portrait sits on the left of its photograph, so the frame follows him */
-.gate-ph img { object-position: 14% 10%; }
+.gate-ph img { object-position: 62% 30%; }
 
 /* Contenido: campaigns. One card holds the whole offer: the pitch and its button on one side, the key visual on the other, and under
    the pitch the brands campaigns have been made for, on a line that ends level with the picture. On a narrow screen: pitch, picture, brands.
@@ -885,7 +894,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .pa-panel.on { opacity: 1; visibility: visible; translate: 0 0; transition-delay: .08s, .08s, 0s; }
 .pa-panel figure { position: relative; margin: 0; min-height: 460px; background: var(--soft); }
 .pa-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-#pa-p1 img { object-position: 8% 50%; }   /* the globe and the books sit on the left of that picture */
+#pa-p1 img { object-position: 50% 8%; }   /* the arrow is centred in the file; from the top, so the arrowhead and the coins around it show */
 .pa-txt { display: grid; align-content: center; justify-items: start; gap: 18px; padding: 56px; }
 .pa-k { font-size: 12px; font-weight: 500; line-height: 1; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); }
 .pa-txt h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(36px, 3.8vw, 54px); line-height: 1; letter-spacing: -.01em; }
@@ -899,6 +908,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   .pa-chips button { grid-template-columns: auto 1fr; align-items: baseline; gap: 14px; padding: 18px 20px; }
   .pa-panel { grid-template-columns: minmax(0, 1fr); border-radius: 22px; }
   .pa-panel figure { min-height: 0; aspect-ratio: 3 / 2; }
+  #pa-p1 img { object-position: 50% 2%; }   /* the wider frame on a phone: leave air above the top coin */
   .pa-txt { padding: 30px 24px 34px; }
 }
 @media (prefers-reduced-motion: reduce) { .pa-panel, .pa-chips button { transition: none; } }
@@ -946,33 +956,34 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .faq details a { color: var(--ink); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; white-space: nowrap; }
 @media (max-width: 700px) { .faq summary { font-size: 17px; padding-block: 18px; } .faq details p { font-size: 16px; } }
 
-/* Home: who he is, compact, on a tinted band above the questions */
+/* Footer: the privacy notice link sits with the copyright line */
+.legal-end { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px 22px; white-space: nowrap; }
+.legal-end a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; transition: color .25s; }
+.legal-end a:hover { color: #fff; }
+@media (max-width: 700px) { .legal-end { justify-content: flex-start; } }
+
+/* Home: his philosophy, compact, on a tinted band */
 .qs { margin-top: 72px; padding-block: 80px; background: var(--wash); scroll-margin-top: 88px; }
 .qs + section[aria-labelledby="h-island"] { margin-top: 72px; }
 .qs-top { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); align-items: center; gap: 64px; }
 .qs-ph { margin: 0; aspect-ratio: 4 / 5; border-radius: 24px; overflow: hidden; background: rgba(29, 29, 31, .08); }
-.qs-ph img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; filter: grayscale(1) contrast(1.06); }
+.qs-ph img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
 .qs-text { display: grid; justify-items: start; gap: 16px; }
 .qs-text h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(26px, 3vw, 40px); line-height: 1.12; letter-spacing: .08em; text-transform: uppercase; text-wrap: balance; }
 .qs-lead { max-width: 34em; font-family: var(--f-serif); font-size: clamp(20px, 1.7vw, 23px); line-height: 1.45; color: var(--ink); }
 .qs-note { max-width: 44em; font-size: 16px; line-height: 1.55; color: var(--t2); }
-.qs-note .link { display: flex; width: max-content; margin-top: 8px; }
-.qs-creds { display: grid; gap: 12px; margin-top: 10px; padding-top: 22px; border-top: 1px solid rgba(29, 29, 31, .14); width: 100%; }
+.qs-creds { display: grid; justify-items: start; gap: 18px; margin-top: 10px; padding-top: 22px; border-top: 1px solid rgba(29, 29, 31, .14); width: 100%; }
+.qs-pill { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border: 1px solid rgba(29, 29, 31, .3); border-radius: 999px; font-size: 15px; font-weight: 500; line-height: 1.2; color: var(--ink); transition: background .25s, color .25s, border-color .25s; }
+.qs-pill::after { content: "\203A"; font-size: 1.2em; line-height: 1; transition: translate .3s var(--ease); }
+.qs-pill:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+.qs-pill:hover::after { translate: 3px 0; }
+#quien { scroll-margin-top: 168px; }
 .qs-creds > span { font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); }
-.qs-creds ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.qs-creds li { padding: 8px 14px; border: 1px solid rgba(29, 29, 31, .2); border-radius: 999px; font-size: 14px; line-height: 1.2; color: var(--ink); }
-.qs-feats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 40px; margin: 48px 0 0; padding: 36px 0 0; list-style: none; border-top: 1px solid rgba(29, 29, 31, .14); }
-.qs-feats li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 16px; align-items: start; }
-.qs-feats i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: var(--ink); }
-.qs-feats svg { width: 20px; height: 20px; }
-.qs-feats h3 { font-size: 17px; font-weight: 600; line-height: 1.25; letter-spacing: -.01em; }
-.qs-feats p { margin-top: 4px; font-size: 15px; line-height: 1.45; color: var(--t2); }
 @media (max-width: 900px) {
   .qs { margin-top: 44px; padding-block: 48px; }
   .qs + section[aria-labelledby="h-island"] { margin-top: 44px; }
   .qs-top { grid-template-columns: minmax(0, 1fr); gap: 26px; }
   .qs-ph { width: min(240px, 62%); border-radius: 20px; }
-  .qs-feats { grid-template-columns: minmax(0, 1fr); gap: 20px; margin-top: 34px; padding-top: 28px; }
 }
 
 /* Contenido: one strip for every name he has worked with, in black and white, drifting to the left. The files keep their own ground
@@ -981,11 +992,14 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 .mq { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 36px; padding: 22px 0 22px 40px; border-radius: 32px; background: #fff; overflow: hidden; }
 .mq .eyebrow { white-space: nowrap; }
 .mq-view { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%); }
-.mq-track { --k: 1; display: flex; align-items: center; width: max-content; margin: 0; padding: 0; list-style: none; animation: mq 46s linear infinite; }
+.mq-track { --k: 1; display: flex; align-items: center; width: max-content; margin: 0; padding: 0; list-style: none; animation: mq var(--t, 46s) linear infinite; }
 .mq-track li { flex: none; display: grid; place-items: center; height: 72px; padding-inline: 36px; }
 .mq-track img { display: block; width: auto; max-width: none; height: calc(var(--h) * var(--k) * 1px); filter: grayscale(1) contrast(1.12); opacity: .86; }
 .mq-track img.inv { filter: invert(1) grayscale(1) contrast(1.12); }
 @keyframes mq { to { transform: translateX(-50%); } }
+/* the same strip under "Mi filosofía" on the home: three marks, so they get more air between them */
+.regs { padding-block: 28px 0; }
+.mq-reg .mq-track li { padding-inline: 56px; }
 @media (prefers-reduced-motion: reduce) {
   .mq-view { -webkit-mask-image: none; mask-image: none; }
   .mq-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
@@ -996,6 +1010,8 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   .mq .eyebrow { padding-inline: 22px; }
   .mq-track { --k: .86; }
   .mq-track li { height: 62px; padding-inline: 26px; }
+  .regs { padding-block: 20px 0; }
+  .mq-reg .mq-track li { padding-inline: 34px; }
 }
 
 /* Contenido: the showcase. A deck of cards on a tinted panel: one piece in front, the edges of the others fanned behind it. Each card
@@ -1053,11 +1069,11 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
 <div class="nav" id="nav">
   <nav class="nav-in" aria-label="Principal">
     <a class="mark" href="index.html" aria-label="Gustavo Pérez, inicio">Gustavo Pérez<b>.</b></a>
-    <div class="links"><a href="#quien">Quién soy</a><a href="inversiones.html">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener">Mis servicios</a><a href="contenido.html">Contenido</a></div>
+    <div class="links"><a href="#filosofia">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener">Mi empresa</a><a href="contenido.html">Colaboraciones</a></div>
     <div class="nav-acts"><a class="btn sm" href="contacto.html">Escríbeme</a><button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><i></i><i></i></button></div>
   </nav>
 </div>
-<div class="menu" id="menu"><a href="index.html" style="--i:0" aria-current="page">Inicio</a><a href="#quien" style="--i:1">Quién soy</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener" style="--i:3">Mis servicios</a><a href="contenido.html" style="--i:4">Contenido</a><a href="contacto.html" style="--i:5">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
+<div class="menu" id="menu"><a href="index.html" style="--i:0" aria-current="page">Inicio</a><a href="#filosofia" style="--i:1">Mi filosofía</a><a href="inversiones.html" style="--i:2">Inversiones</a><a href="https://bebl0ck.mx" target="_blank" rel="noopener" style="--i:3">Mi empresa</a><a href="contenido.html" style="--i:4">Colaboraciones</a><a href="contacto.html" style="--i:5">Contacto</a><a href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="--i:6">Instagram</a></div>
 
 <header class="hero2 h2-left h2-big" id="inicio">
   <div class="h2-media"><img src="img/hero-marmol.jpg" alt="Gustavo Pérez de traje gris, de pie frente a un muro de mármol oscuro" width="1920" height="1080" fetchpriority="high"></div>
@@ -1092,28 +1108,27 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   <section class="credo" aria-labelledby="h-credo">
     <div class="wrap cv-grid">
       <div class="cv-head" data-rv>
-        <p class="cv-k"><i aria-hidden="true"></i>Gustavo Pérez · Inversiones</p>
-        <h2 id="h-credo">Primero el objetivo.</h2>
-        <p class="cv-lead">Después, el camino. <em>Hay más de una forma de invertir, y cada una responde a algo distinto que puedes buscar con tu dinero. Estas son algunas de las que trabajo con mi equipo.</em></p>
+        <p class="cv-k"><i aria-hidden="true"></i>Asesoría</p>
+        <h2 id="h-credo">Decidir acompañado.</h2>
+        <p class="cv-lead">Cambia el resultado. <em>Un asesor te ayuda a ver el panorama completo, a sostener el plan cuando el mercado se mueve y a decidir con información.</em></p>
       </div>
       <figure class="cv-fig" data-rv style="--d:1">
-        <div class="cv" role="img" aria-label="Retrato de estudio de Gustavo Pérez; a la derecha, en blanco y negro: autos nuevos en fila, una gráfica de velas y un edificio con trazos de plano">
+        <div class="cv" role="img" aria-label="Retrato de estudio de Gustavo Pérez; a la derecha, en blanco y negro: un escritorio con una laptop y una silla, una ciudad de noche vista desde lo alto y un rey de ajedrez sobre gráficas">
           <div class="cv-t cv-main"><img src="img/cv-estudio.jpg" alt="" loading="lazy" width="680" height="1000"></div>
           <div class="cv-side">
-            <div class="cv-t"><img src="img/cv-autos.jpg" alt="" loading="lazy" width="736" height="794"></div>
-            <div class="cv-t"><img src="img/cv-grafica.jpg" alt="" loading="lazy" width="631" height="750"></div>
-            <div class="cv-t"><img src="img/cv-edificio.jpg" alt="" loading="lazy" width="736" height="794"></div>
+            <div class="cv-t"><img src="img/bienvenida.jpg" alt="" loading="lazy" width="1800" height="1200" style="object-position:55% 50%"></div>
+            <div class="cv-t"><img src="img/futuro.jpg" alt="" loading="lazy" width="1400" height="724" style="object-position:45% 50%"></div>
+            <div class="cv-t"><img src="img/servicios-rey.jpg" alt="" loading="lazy" width="736" height="736"></div>
           </div>
         </div>
       </figure>
       <div class="cv-body" data-rv>
         <ol class="cv-list">
-          <li><span>01</span><div><h3>Ponerlo a trabajar a mediano plazo</h3><p>Arrendamiento: activos que se rentan bajo contrato, con tu capital invertido por varios años.</p></div></li>
-          <li><span>02</span><div><h3>Hacerlo crecer a largo plazo</h3><p>Fondos de inversión: portafolios diversificados, elegidos según tu perfil y tu plazo.</p></div></li>
-          <li><span>03</span><div><h3>Respaldarlo en algo tangible</h3><p>Propiedades para renta, con mi equipo a cargo de la gestión.</p></div></li>
+          <li><span>01</span><div><h3>Más rendimiento neto</h3><p>Vanguard estima que un asesor puede sumar alrededor de 3% al rendimiento neto de sus clientes.</p></div></li>
+          <li><span>02</span><div><h3>Cómo te ayudamos</h3><p>Mi equipo y yo partimos de tu situación real, te ayudamos a ver con claridad dónde estás y te acompañamos en cada decisión que sigue.</p></div></li>
         </ol>
-        <div class="cv-acts"><a class="btn" href="inversiones.html">Ver inversiones</a><a class="btn line" href="contacto.html#inversiones">Escríbeme</a></div>
-        <p class="cv-note">Información general, no una recomendación personalizada. Toda inversión implica riesgo.</p>
+        <div class="cv-acts"><a class="btn" href="#diagnostico">Quiero mi diagnóstico</a><a class="btn line" href="inversiones.html">Inversiones</a></div>
+        <p class="cv-note">Fuente: Vanguard, Adviser’s Alpha. Es un estudio de un tercero, no un resultado propio ni una promesa de rendimiento.</p>
       </div>
     </div>
   </section>
@@ -1121,7 +1136,7 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
   <section class="sesion" id="diagnostico" aria-labelledby="h-sesion">
     <div class="ses-box">
       <figure class="ses-ph">
-        <img src="img/diagnostico-gustavo.jpg" alt="Gustavo Pérez conversando con una clienta en una sala de juntas, durante una sesión uno a uno" width="1653" height="1134" loading="lazy">
+        <img src="img/diagnostico-oficina.jpg" alt="Oficina con un escritorio y dos sillones frente a frente" width="1600" height="1336" loading="lazy">
         <figcaption><b>“Primero el diagnóstico. Después, el plan.”</b><span>Uno a uno · Tú eliges el día</span></figcaption>
       </figure>
       <div class="ses-in">
@@ -1132,10 +1147,9 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
           <li>Una sesión uno a uno, con tus números y tu situación real.</li>
           <li>Vemos el panorama completo, no un tema aislado.</li>
           <li>Detectamos qué te frena y qué conviene hacer primero.</li>
-          <li>Sales con tu diagnóstico por escrito y el siguiente paso definido.</li>
+          <li>Sales con tu diagnóstico por escrito y un plan de acción.</li>
         </ul>
         <p class="ses-price"><b>$899 MXN</b><i>pago único</i></p>
-        <p class="ses-note">Sin mensualidades ni membresías.</p>
         <a class="btn ses-cta" href="https://buy.stripe.com/fZueV562S22ffha6nDeEo02" rel="noopener">Quiero mi diagnóstico</a>
         <p class="ses-note">Al terminar el pago eliges el día y la hora. ¿Dudas? <a href="contacto.html#asesoria">Escríbeme antes</a>.</p>
         <p class="ses-fine">Orientación y acompañamiento. No se garantizan rendimientos.</p>
@@ -1143,26 +1157,31 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
     </div>
   </section>
 
-  <section class="qs" id="quien" aria-labelledby="h-qs">
-    <div class="wrap">
+  <section class="qs" id="filosofia" aria-labelledby="h-qs">
+    <div class="wrap" id="quien">
       <div class="qs-top">
         <figure class="qs-ph" data-rv><img src="img/gustavo-retrato.jpg" alt="Retrato de Gustavo Pérez" loading="lazy" width="1100" height="1649"></figure>
         <div class="qs-text" data-rv style="--d:1">
-          <span class="eyebrow">Quién soy</span>
-          <h2 id="h-qs">Sin promesas mágicas. Con estructura.</h2>
-          <p class="qs-lead">Soy Gustavo Pérez. Trabajo todos los días con personas que quieren poner su dinero en orden. Casi nunca les falta ingreso. Les falta estructura.</p>
-          <p class="qs-note">Hoy dirijo Be Block, la firma donde mi equipo convierte estas ideas en planes reales. <a class="link" href="https://bebl0ck.mx" target="_blank" rel="noopener">Conoce Be Block</a></p>
+          <span class="eyebrow">Mi filosofía</span>
+          <h2 id="h-qs">Decisiones con estructura.</h2>
+          <p class="qs-lead">Soy Gustavo Pérez. Acompaño a personas y empresas en sus decisiones financieras, desde las de hoy hasta las que definen su futuro.</p>
+          <p class="qs-lead">Casi nunca les falta ingreso; les falta estructura. Por eso mi filosofía es simple: entender primero y decidir después. Trabajo con instrumentos regulados y con decisiones que puedas entender y sostener en el tiempo. Mi objetivo es que cada persona y cada empresa con la que trabajo construya un patrimonio sólido y vea buenos resultados.</p>
+          <p class="qs-note">Hoy dirijo Be Block, la firma donde mi equipo convierte estas ideas en planes reales.</p>
           <div class="qs-creds">
             <span>Más de 15 años en el sector financiero</span>
-            <ul><li>Contador Público y Financiero</li><li>Maestría en Administración de Negocios</li><li>Asesor en Estrategias de Inversión</li><li>Agente de Seguros (CNSF)</li></ul>
+            <a class="qs-pill" href="https://bebl0ck.mx" target="_blank" rel="noopener">Conoce Be Block</a>
           </div>
         </div>
       </div>
-      <ul class="qs-feats" data-rv>
-        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V10M10 19V5M16 19v-7M21 19H3"/></svg></i><div><h3>Números reales</h3><p>Hablo con cifras de verdad, no con proyecciones de folleto.</p></div></li>
-        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.500-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></i><div><h3>Sin vender miedo</h3><p>Explico riesgos y opciones con calma, para que decidas con claridad.</p></div></li>
-        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg></i><div><h3>Un plan que puedas sostener</h3><p>Funciona lo que cabe en tu vida de hoy y se revisa con el tiempo.</p></div></li>
-      </ul>
+    </div>
+  </section>
+
+  <section class="marcas regs" aria-label="Autoridades que regulan los instrumentos con los que trabaja Gustavo Pérez">
+    <div class="wrap">
+      <div class="mq mq-reg" data-rv>
+        <span class="eyebrow">Instrumentos regulados por</span>
+        <div class="mq-view"><ul class="mq-track" style="--t:57s"><li><img src="img/reg-cnsf.jpg" alt="CNSF, Comisión Nacional de Seguros y Fianzas" width="215" height="264" decoding="async" style="--h:66"></li><li><img src="img/reg-cnbv.jpg" alt="CNBV, Comisión Nacional Bancaria y de Valores" width="470" height="264" decoding="async" style="--h:66"></li><li><img src="img/reg-shcp.jpg" alt="Hacienda, Secretaría de Hacienda y Crédito Público" width="722" height="160" decoding="async" style="--h:40"></li><li aria-hidden="true"><img src="img/reg-cnsf.jpg" alt="" width="215" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-cnbv.jpg" alt="" width="470" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-shcp.jpg" alt="" width="722" height="160" decoding="async" style="--h:40"></li><li aria-hidden="true"><img src="img/reg-cnsf.jpg" alt="" width="215" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-cnbv.jpg" alt="" width="470" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-shcp.jpg" alt="" width="722" height="160" decoding="async" style="--h:40"></li><li aria-hidden="true"><img src="img/reg-cnsf.jpg" alt="" width="215" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-cnbv.jpg" alt="" width="470" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-shcp.jpg" alt="" width="722" height="160" decoding="async" style="--h:40"></li><li aria-hidden="true"><img src="img/reg-cnsf.jpg" alt="" width="215" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-cnbv.jpg" alt="" width="470" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-shcp.jpg" alt="" width="722" height="160" decoding="async" style="--h:40"></li><li aria-hidden="true"><img src="img/reg-cnsf.jpg" alt="" width="215" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-cnbv.jpg" alt="" width="470" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-shcp.jpg" alt="" width="722" height="160" decoding="async" style="--h:40"></li><li aria-hidden="true"><img src="img/reg-cnsf.jpg" alt="" width="215" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-cnbv.jpg" alt="" width="470" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-shcp.jpg" alt="" width="722" height="160" decoding="async" style="--h:40"></li><li aria-hidden="true"><img src="img/reg-cnsf.jpg" alt="" width="215" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-cnbv.jpg" alt="" width="470" height="264" decoding="async" style="--h:66"></li><li aria-hidden="true"><img src="img/reg-shcp.jpg" alt="" width="722" height="160" decoding="async" style="--h:40"></li></ul></div>
+      </div>
     </div>
   </section>
 
@@ -1177,8 +1196,8 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
           <span class="dos-tag">Pago único</span>
           <p class="dos-lab">Diagnóstico 1 a 1</p>
           <p class="dos-big"><b>$899 MXN</b><i>pago único</i></p>
-          <p class="dos-txt">Una sesión uno a uno con tus números y tu situación real. Sales con tu diagnóstico por escrito y el siguiente paso definido.</p>
-          <p class="dos-it">Sin mensualidades ni membresías. Al terminar el pago eliges el día y la hora.</p>
+          <p class="dos-txt">Una sesión uno a uno con tus números y tu situación real. Sales con tu diagnóstico por escrito y un plan de acción.</p>
+          <p class="dos-it">Al terminar el pago eliges el día y la hora.</p>
           <a class="btn light" href="https://buy.stripe.com/fZueV562S22ffha6nDeEo02" rel="noopener">Quiero mi diagnóstico</a>
         </article>
         <article class="dos-card">
@@ -1197,21 +1216,10 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
       <div class="island" data-rv>
         <div class="island-head">
           <span class="eyebrow">Preguntas reales</span>
-          <h2 id="h-island">Pregúntame lo que sea sobre tu dinero.</h2>
+          <h2 id="h-island">Toda decisión empieza con una pregunta.</h2>
         </div>
         <div class="track" aria-hidden="true" id="t1"></div>
         <div class="track rev" aria-hidden="true" id="t2"></div>
-        <div class="faq">
-          <p class="eyebrow">Antes de empezar</p>
-          <details><summary>¿Qué es el diagnóstico 1 a 1?</summary><p>Una sesión uno a uno en la que revisamos tus números y tu situación real. Vemos el panorama completo, detectamos qué te frena y qué conviene hacer primero. Sales con tu diagnóstico por escrito y el siguiente paso definido.</p></details>
-          <details><summary>¿Cuánto cuesta? ¿Hay mensualidades?</summary><p>$899 MXN en un pago único. No hay mensualidades ni membresías.</p></details>
-          <details><summary>¿Cómo agendo mi sesión?</summary><p>Al terminar el pago eliges el día y la hora que te acomoden.</p></details>
-          <details><summary>¿Me sirve si mi duda es sobre mi negocio?</summary><p>Sí. La sesión parte de tu situación, sea personal o de tu negocio, y la revisa completa, no como un tema aislado.</p></details>
-          <details><summary>¿Cómo sé qué inversión es para mí?</summary><p>Cada inversión tiene su riesgo, su plazo y su monto. Por eso primero revisamos tu caso y después vemos si alguna tiene sentido para ti. Empieza con un mensaje.</p></details>
-          <details><summary>¿Puedo disponer de mi dinero cuando quiera?</summary><p>Depende de la inversión. Algunas piden dejar tu capital invertido durante varios años, así que el plazo se revisa antes de decidir.</p></details>
-          <details><summary>¿Garantizan rendimientos?</summary><p>No. Toda inversión implica riesgo y puedes perder parte de tu capital. Que algo haya funcionado antes no garantiza que funcione después. Lo que ofrezco es orientación y acompañamiento.</p></details>
-          <details><summary>Tengo dudas antes de pagar, ¿qué hago?</summary><p>Escríbeme antes. Cuéntame tu caso y te digo si el diagnóstico es para ti. <a href="contacto.html#asesoria">Ir a contacto</a></p></details>
-        </div>
       </div>
     </div>
   </section>
@@ -1230,13 +1238,13 @@ button.vpill:hover { background: rgba(255, 255, 255, .26); scale: 1.03; }
         <p>Ideas claras sobre dinero, todos los días en Instagram.</p>
         <a class="btn light sm" href="https://www.instagram.com/s0ygustavo/" target="_blank" rel="noopener" style="justify-self:start">Sígueme en Instagram</a>
       </div>
-      <div class="fcol"><h4>Sitio</h4><a href="index.html">Inicio</a><a href="index.html#quien">Quién soy</a><a href="inversiones.html">Inversiones</a><a href="contenido.html">Contenido</a></div>
+      <div class="fcol"><h4>Sitio</h4><a href="index.html">Inicio</a><a href="index.html#filosofia">Mi filosofía</a><a href="inversiones.html">Inversiones</a><a href="contenido.html">Colaboraciones</a></div>
       <div class="fcol"><h4>Escríbeme</h4><a href="contacto.html#asesoria">Asesoría</a><a href="contacto.html#conferencias">Conferencias</a><a href="contacto.html#colaboraciones">Colaboraciones</a><a href="contacto.html#otro">Otro tema</a></div>
       <div class="fcol"><h4>Be Block</h4><a href="https://bebl0ck.mx" target="_blank" rel="noopener">bebl0ck.mx</a><span>La firma que dirijo</span></div>
     </div>
     <div class="legal">
       <p>El contenido de este sitio es informativo y no constituye una recomendación de inversión personalizada. Cada decisión financiera depende de tu situación particular. Rendimientos pasados no garantizan rendimientos futuros.</p>
-      <span>© 2026 Gustavo Pérez</span>
+      <span class="legal-end"><a href="https://www.bebl0ck.mx/aviso-de-privacidad" target="_blank" rel="noopener">Aviso de privacidad</a><span>© 2026 Gustavo Pérez</span></span>
     </div>
   </div>
 </footer>
@@ -1478,50 +1486,60 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
 
 /* ---------- Investments: the notice comes before the content ---------- */
 (function gate() {
+  /* The note before the investments shows on every visit to the page. Nothing is stored: a reload, a new tab or coming back
+     from another page (also through the browser's back button, which can restore the page as it was) all show it again. */
   const g = $1("#gate"); if (!g) return;
-  const root = document.documentElement, KEY = "s0y-aviso";
-  const store = on => { try { on ? sessionStorage.setItem(KEY, "1") : sessionStorage.removeItem(KEY); } catch (e) {} };
+  const root = document.documentElement;
+  try { sessionStorage.removeItem("s0y-aviso"); } catch (e) {}   // left by the earlier version, which remembered the click
   $1("#gateBtn").addEventListener("click", () => {
-    root.classList.add("gate-ok"); store(true); scrollTo(0, 0); reqScroll();
+    root.classList.add("gate-ok"); scrollTo(0, 0); reqScroll();
     const h = $1("#inv h1"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
   });
   const again = $1("#gateAgain");
-  if (again) again.addEventListener("click", () => { root.classList.remove("gate-ok"); store(false); scrollTo(0, 0); });
+  if (again) again.addEventListener("click", () => { root.classList.remove("gate-ok"); scrollTo(0, 0); });
+  addEventListener("pageshow", e => { if (e.persisted) { root.classList.remove("gate-ok"); scrollTo(0, 0); } });
 })();
 
-/* ---------- Contact form ---------- */
+/* ---------- Forms: the general contact form and the one of each investment ---------- */
 (function cform() {
   const f = $1("#cf"); if (!f) return;
   const ENDPOINT = f.dataset.endpoint, LIVE = /(^|\.)s0ygustavo\.com$/.test(location.hostname);
   const name = $1("#cf-name"), email = $1("#cf-email"), phone = $1("#cf-phone"), topic = $1("#cf-topic"), err = $1("#cf-err"), btn = $1("#cf-send"), done = $1("#cf-done");
-  const pick = () => { const k = decodeURIComponent(location.hash.slice(1)); if (k && [...topic.options].some(o => o.value === k)) topic.value = k; };
-  /* Workshops and brand collaborations go to Gustavo (email only); everything else to Be Block. */
-  const GUS = f.dataset.gus, BB = f.dataset.bb, mail = $1("#cs-mail"), tel = $1("#cs-tel"), sh = $1("#cs-h"), note = $1("#cs-note");
-  const forGus = () => topic.value === "conferencias" || topic.value === "colaboraciones";
-  const side = () => {
-    const g = forGus(), to = g ? GUS : BB;
-    mail.textContent = to; mail.href = "mailto:" + to; tel.hidden = g;
-    sh.textContent = g ? "Si prefieres, escríbele directo a Gustavo." : "Si prefieres, escribe o llama directo.";
-    note.textContent = g ? "Te atiende Gustavo." : "Te atiende el equipo de Be Block.";
-  };
-  topic.addEventListener("change", side);
-  addEventListener("hashchange", () => { pick(); side(); }); pick(); side();
+  const INV = f.dataset.inv || "", qs = $$("[data-q]", f);   // on an investment's own form: its name and its questions
+  const GUS = f.dataset.gus, BB = f.dataset.bb, send = btn.textContent;
+  /* General form: workshops and brand collaborations go to Gustavo (email only); everything else to Be Block. */
+  const forGus = () => !!topic && (topic.value === "conferencias" || topic.value === "colaboraciones");
+  if (topic) {
+    const mail = $1("#cs-mail"), tel = $1("#cs-tel"), sh = $1("#cs-h"), note = $1("#cs-note");
+    const pick = () => { const k = decodeURIComponent(location.hash.slice(1)); if (k && [...topic.options].some(o => o.value === k)) topic.value = k; };
+    const side = () => {
+      const g = forGus(), to = g ? GUS : BB;
+      mail.textContent = to; mail.href = "mailto:" + to; tel.hidden = g;
+      sh.textContent = g ? "Si prefieres, escríbele directo a Gustavo." : "Si prefieres, escribe o llama directo.";
+      note.textContent = g ? "Te atiende Gustavo." : "Te atiende el equipo de Be Block.";
+    };
+    topic.addEventListener("change", side);
+    addEventListener("hashchange", () => { pick(); side(); }); pick(); side();
+  }
   function check() {
     const bad = [];
     if (name.value.trim().length < 2) bad.push([name, "tu nombre"]);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) bad.push([email, "un correo válido"]);
     if (phone.value.replace(/\D/g, "").length < 10) bad.push([phone, "un teléfono de 10 dígitos"]);
-    if (!topic.value) bad.push([topic, "en qué estás interesado"]);
-    [name, email, phone, topic].forEach(el => el.classList.toggle("bad", bad.some(b => b[0] === el)));
+    if (topic && !topic.value) bad.push([topic, "en qué estás interesado"]);
+    const open = qs.filter(q => q.required && !q.value.trim());   // unanswered questions: one short mention, all of them marked
+    if (open.length) bad.push([open[0], open.length > 1 ? "responder las preguntas marcadas" : "responder la pregunta marcada"]);
+    [name, email, phone, topic, ...qs].forEach(el => el && el.classList.toggle("bad", bad.some(b => b[0] === el) || open.includes(el)));
     err.textContent = bad.length ? "Falta " + bad.map(b => b[1]).join(", ") + "." : "";
     if (bad.length) bad[0][0].focus();
     return !bad.length;
   }
-  /* Without a form service connected, the visitor's own mail app sends the request. */
+  const sent = () => { f.hidden = true; done.hidden = false; done.focus({ preventScroll: true }); done.scrollIntoView({ block: "nearest" }); };
+  /* If the form service does not answer, the visitor's own mail app sends the request. */
   function viaMail(data) {
     const to = forGus() ? GUS : BB;
-    const body = "Nombre: " + data.Nombre + "\nCorreo: " + data.email + "\nTeléfono: " + data["Teléfono"] + "\nMe interesa: " + data["Interés"];
-    f.hidden = true; done.hidden = false; done.focus({ preventScroll: true });
+    const body = Object.keys(data).filter(k => k[0] !== "_").map(k => (k === "email" ? "Correo" : k) + ": " + data[k]).join("\n");
+    sent();
     $1(".eyebrow", done).textContent = "Un paso más";
     $1("h2", done).textContent = "Envía el correo que se abrió.";
     $1("p", done).textContent = "Tus datos ya van escritos; solo confirma el envío. Si no se abrió tu correo, escribe a " + to + ".";
@@ -1530,10 +1548,13 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
   f.addEventListener("submit", async e => {
     e.preventDefault(); if (!check()) return;
     if ($1('[name="_honey"]', f).value) return;
-    const label = topic.options[topic.selectedIndex].text;
-    const data = { Nombre: name.value.trim(), email: email.value.trim(), "Teléfono": phone.value.trim(), "Interés": label, _replyto: email.value.trim(), _subject: "Nuevo contacto en s0ygustavo.com: " + label, _template: "table", _captcha: "false" };
+    const label = topic ? topic.options[topic.selectedIndex].text : INV;
+    const data = { Nombre: name.value.trim(), email: email.value.trim(), "Teléfono": phone.value.trim() };
+    data[topic ? "Interés" : "Inversión"] = label;
+    qs.forEach(q => { const v = q.value.trim(); if (v) data[q.dataset.q] = v; });
+    Object.assign(data, { _replyto: data.email, _subject: (topic ? "Nuevo contacto en s0ygustavo.com: " : "Nuevo registro de inversión en s0ygustavo.com: ") + label, _template: "table", _captcha: "false" });
     if (forGus()) data._cc = GUS;
-    if (!LIVE) { f.hidden = true; done.hidden = false; done.focus({ preventScroll: true }); $1("p", done).textContent = "Vista previa: en el sitio publicado, estos datos se envían por correo."; return; }
+    if (!LIVE) { sent(); $1("p", done).textContent = "Vista previa: en el sitio publicado, estos datos se envían por correo."; return; }
     if (!ENDPOINT) { viaMail(data); return; }
     btn.disabled = true; btn.textContent = "Enviando…";
     const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 10000);
@@ -1541,9 +1562,9 @@ if (!RM) $$("[data-par]").forEach(el => scrollFns.push(vh => { const r = el.getB
       const r = await fetch(ENDPOINT, { method: "POST", signal: ctl.signal, headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
       const j = await r.json().catch(() => ({}));
       if (!r.ok || String(j.success) === "false") throw new Error(j.message || "error");
-      f.hidden = true; done.hidden = false; done.focus({ preventScroll: true });
+      sent();
     } catch (x) { viaMail(data); }
-    finally { clearTimeout(timer); btn.disabled = false; btn.textContent = "Enviar"; }
+    finally { clearTimeout(timer); btn.disabled = false; btn.textContent = send; }
   });
 })();
 
